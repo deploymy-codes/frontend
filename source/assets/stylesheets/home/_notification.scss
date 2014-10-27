@@ -1,0 +1,18 @@
+.m-notification {
+  padding-top: 5em;
+}
+
+.m-notification--title {
+  padding: 1em;
+}
+
+.m-notification--field {
+  border:         none;
+  border-bottom:  1px solid $field-color;
+  color:          $field-color;
+  padding:        1em;
+  width:          100%;
+  &:focus {
+    outline-color: $field-focus-color;
+  }
+}

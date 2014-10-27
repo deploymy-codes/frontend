@@ -1,0 +1,6 @@
+.button {
+  &.callout {
+    @include button-style($bg: $callout-color);
+    font-variant: small-caps;
+  }
+}
