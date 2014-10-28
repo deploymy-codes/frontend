@@ -18,7 +18,7 @@ cp data/mailchimp.yml{.sample,}
 middleman server
 ```
 
-## DeploySync to S3
+## Deploy to S3
 
 ```bash
 middleman build
