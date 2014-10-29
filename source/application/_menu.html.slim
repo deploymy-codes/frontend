@@ -1,0 +1,16 @@
+nav class="top-bar" data-topbar="" role="navigation"
+  ul class="title-area"
+    li class="name"
+      h1
+        = link_to('/', class: 'm-menu--project-name') do
+          = image_tag('logo.png', class: 'm-menu--logo')
+          | deploymy.codes
+
+    li class="toggle-topbar menu-icon"
+      a href="#"
+        span Menu
+
+  section class="top-bar-section"
+    ul class="right"
+      li
+        = link_to('sign in', '/sign_in.html')

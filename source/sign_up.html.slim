@@ -1,0 +1,46 @@
+---
+layout: application
+title: Sign up on Deploy My Codes
+---
+div class="small-12 columns text-center m-sign_up--title-wrapper"
+  h2 class="m-sign_up--title" Sign up now to start deploying for free.
+
+div class="row m-providers"
+  div class="medium-6 columns text-center"
+    div
+      i class="fa fa-github m-provider-logo"
+    = link_to('sign up with github', '', class: 'button large callout')
+
+  div class="medium-6 columns text-center"
+    div
+      i class="fa fa-bitbucket m-provider-logo"
+    = link_to('sign up with bitbucket', '', class: 'button large callout')
+
+div class="row"
+  div class="small-12 columns text-center"
+    p
+      ' or
+      = link_to('sign in', '/sign_in.html')
+
+div class="row"
+  div class="small-12 columns"
+    div class="panel"
+      div class="row"
+        div class="medium-10 large-push-2 large-8 columns text-center"
+          ' As soon as you sign up, you will start using the
+          strong FREE plan
+          '. To get started with this plan, you have
+          strong no credit card
+          '
+          ' required.
+          | You can upgrade/downgrade your plan at any time.
+
+div class="row"
+  div class="small-12 columns text-center"
+    p
+      ' By signing up, you're agreeing to the
+      =' link_to('Terms of Service', '/terms_of_services.html')
+      ' and our
+      = link_to('Privacy Policy', '/privacy_policy.html')
+      |.
+
