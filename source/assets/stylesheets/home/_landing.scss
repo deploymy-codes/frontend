@@ -31,6 +31,13 @@
   }
 }
 
+.m-landing--logo {
+  width: 42px;
+  @media #{$medium-up} {
+    width: 84px;
+  }
+}
+
 .m-landing--social {
   list-style-type: none;
   margin:          2em;
