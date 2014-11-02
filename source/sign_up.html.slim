@@ -5,16 +5,18 @@ title: Sign up on Deploy My Codes
 div class="small-12 columns text-center m-sign_up--title-wrapper"
   h2 class="m-sign_up--title" Sign up now to start deploying for free.
 
-div class="row m-providers"
+div class="row m-providers" ng-controller="AuthenticationCtrl"
   div class="medium-6 columns text-center"
     div
       i class="fa fa-github m-provider-logo"
-    = link_to('sign up with github', '', class: 'button large callout')
+    button class="button large callout" ng-click="authenticate('github')"
+      | sign up with github
 
   div class="medium-6 columns text-center"
     div
       i class="fa fa-bitbucket m-provider-logo"
-    = link_to('sign up with bitbucket', '', class: 'button large callout')
+    button class="button large callout" ng-click="authenticate('bitbucket')"
+      | sign up with bitbucket
 
 div class="row"
   div class="small-12 columns text-center"

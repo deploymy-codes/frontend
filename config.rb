@@ -1,5 +1,11 @@
+require 'lib/deploy_my_codes/settings_helpers'
 aws_config = YAML.load(File.read(File.join(root, 'aws.yml')))
 
+set :environment, (ENV['MM_ENV'] || :development).to_sym
+
+helpers DeployMyCodes::SettingsHelpers
+
+activate :dotenv
 activate :livereload
 activate :gzip
 
@@ -13,6 +19,10 @@ end
 set :js_dir,     'assets/javascripts'
 set :css_dir,    'assets/stylesheets'
 set :images_dir, 'assets/images'
+
+configure :development do
+  set :debug_assets, true
+end
 
 configure :build do
   activate :minify_css

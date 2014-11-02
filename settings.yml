@@ -1,0 +1,20 @@
+default:
+  mailchimp: &default_mailchimp
+    username: 'codes'
+    dc: 'u6'
+
+development:
+  github:
+    client_id: 'da3c2c42130e5391041f'
+    api_authentication_url: 'http://localhost:8000/auth?provider=github'
+  mailchimp:
+    <<: *default_mailchimp
+
+production:
+  github:
+    client_id: '9b58abb3f5fc5061687c'
+    api_authentication_url: 'http://api.deploymy.codes/auth?provider=github'
+  mailchimp:
+    <<: *default_mailchimp
+    u: 'e88eeffcd8'
+    id: 'd1235c6a6f'

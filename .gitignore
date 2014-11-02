@@ -15,7 +15,6 @@
 /.cache
 .DS_Store
 
-# Ignore Bower Folder
 /bower_components
-data/*.yml
+/node_modules
 aws.yml

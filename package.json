@@ -1,0 +1,23 @@
+{
+  "name": "frontend",
+  "description": "Frontend website of deploymy.codes.",
+  "author": "Coders <coders@deploymy.codes>",
+  "version": "0.0.1",
+  "homepage": "http://www.deploymy.codes",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:deploymy-codes/frontend"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "dependencies": {
+    "karma": "~ 0.12.24"
+  },
+  "devDependencies": {
+    "karma-mocha": "~ 0.1.9",
+    "karma-phantomjs-launcher": "~ 0.1.4",
+    "karma-sinon-chai": "~ 0.2.0",
+    "mocha": "~ 2.0.1"
+  }
+}

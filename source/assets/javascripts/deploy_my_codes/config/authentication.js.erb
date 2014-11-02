@@ -1,0 +1,10 @@
+(function() {
+  var AuthenticationConfiguration = function($authProvider) {
+    $authProvider.github({
+      clientId: '<%= settings.github.client_id %>',
+      url:      '<%= settings.github.api_authentication_url %>'
+    });
+  };
+
+  angular.module('DeployMyCodes').config(['$authProvider', AuthenticationConfiguration]);
+})();
