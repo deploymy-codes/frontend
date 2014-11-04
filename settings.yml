@@ -6,7 +6,7 @@ default:
 development:
   github:
     client_id: 'da3c2c42130e5391041f'
-    api_authentication_url: 'http://localhost:8000/auth?provider=github'
+    api_authentication_url: 'http://localhost:9292/auth?provider=github'
   mailchimp:
     <<: *default_mailchimp
 

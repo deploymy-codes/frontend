@@ -1,9 +1,12 @@
 require 'lib/deploy_my_codes/settings_helpers'
+require 'lib/deploy_my_codes/template_path_helpers'
+
 aws_config = YAML.load(File.read(File.join(root, 'aws.yml')))
 
 set :environment, (ENV['MM_ENV'] || :development).to_sym
 
 helpers DeployMyCodes::SettingsHelpers
+helpers DeployMyCodes::TemplatePathHelpers
 
 activate :dotenv
 activate :livereload
@@ -16,9 +19,10 @@ activate :s3_sync do |s3_sync|
   s3_sync.aws_secret_access_key = aws_config['secret_access_key']
 end
 
-set :js_dir,     'assets/javascripts'
-set :css_dir,    'assets/stylesheets'
-set :images_dir, 'assets/images'
+set :js_dir,        'assets/javascripts'
+set :css_dir,       'assets/stylesheets'
+set :images_dir,    'assets/images'
+set :templates_dir, 'assets/templates'
 
 configure :development do
   set :debug_assets, true

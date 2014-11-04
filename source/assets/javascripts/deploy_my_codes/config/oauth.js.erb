@@ -1,5 +1,6 @@
 (function() {
   var AuthenticationConfiguration = function($authProvider) {
+    $authProvider.tokenPrefix   = 'deploy_my_codes';
     $authProvider.github({
       clientId: '<%= settings.github.client_id %>',
       url:      '<%= settings.github.api_authentication_url %>'

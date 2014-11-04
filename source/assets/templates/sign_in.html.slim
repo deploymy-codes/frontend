@@ -1,22 +1,25 @@
 ---
-layout: application
+layout: false
 title: Sign in on Deploy My Codes
 ---
 div class="row m-sign_in"
 
-div class="row m-providers"
+div class="row m-providers" ng-controller="AuthenticationCtrl"
   div class="medium-6 columns text-center"
     div
       i class="fa fa-github m-provider-logo"
-    = link_to('sign in with github', '', class: 'button large callout')
+    button class="button large callout" ng-click="authenticate('github')"
+      | sign in with github
 
   div class="medium-6 columns text-center"
     div
       i class="fa fa-bitbucket m-provider-logo"
-    = link_to('sign in with bitbucket', '', class: 'button large callout')
+    button class="button large callout" ng-click="authenticate('bitbucket')"
+      | sign in with bitbucket
 
 div class="row"
   div class="small-12 columns text-center"
     p
       ' Don't have account?
-      = link_to('I want to sign up', '/sign_up.html')
+      a ui-sref="sign_up"
+        | I want to sign up

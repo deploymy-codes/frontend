@@ -9,6 +9,6 @@ html
     = stylesheet_link_tag 'application'
 
   body class="#{page_classes}" ng-app="DeployMyCodes"
-    = partial 'application/menu'
-    = yield
+    div ui-view="menu"
+    div ui-view="application"
     = javascript_include_tag 'application'

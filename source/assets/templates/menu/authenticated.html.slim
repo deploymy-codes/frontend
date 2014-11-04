@@ -1,0 +1,20 @@
+div ng-controller="MenuCtl"
+  top-bar
+    ul class="title-area"
+      li class="name"
+        h1
+          a ui-sref="dashboard" class='m-menu--project-name'
+            = image_tag('logo.png', class: 'm-menu--logo')
+            | deploymy.codes
+
+      li toggle-top-bar="" class="toggle-topbar menu-icon"
+        a href="#"
+          span Menu
+
+    top-bar-section
+      ul class="right" ng-controller="AuthenticationCtrl"
+        li has-dropdown=""
+          a href="#" {{ user.name }}
+          ul top-bar-dropdown=""
+            li
+              a href="#" ng-click="logout()" Sign out

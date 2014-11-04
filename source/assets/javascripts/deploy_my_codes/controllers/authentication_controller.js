@@ -1,11 +1,17 @@
 (function() {
-  var AuthenticationController = function($scope, $auth) {
+  var AuthenticationController = function($scope, $state, AuthenticationService) {
     $scope.authenticate = function(provider) {
-      $auth.authenticate(provider).then(function(response) {
-        console.log(response);
+      AuthenticationService.authenticate(provider).then(function(response) {
+        $state.go('dashboard');
+      });
+    };
+
+    $scope.logout = function() {
+      AuthenticationService.logout().then(function() {
+        $state.go('sign_in');
       });
     };
   };
 
-  angular.module('DeployMyCodes').controller('AuthenticationCtrl', ['$scope', '$auth', AuthenticationController]);
+  angular.module('DeployMyCodes').controller('AuthenticationCtrl', ['$scope', '$state', 'AuthenticationService', AuthenticationController]);
 })();

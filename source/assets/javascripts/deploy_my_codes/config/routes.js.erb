@@ -1,0 +1,53 @@
+(function() {
+  var templatePath = function(name) {
+    return '<%= template_path('') %>' + name;
+  };
+
+  var LoggedInViews = function(templateName) {
+    return {
+      "application": { templateUrl: templatePath(templateName) },
+      "menu":        { templateUrl: templatePath('menu/authenticated.html') }
+    };
+  };
+
+  var NotLoggedInViews = function(templateName) {
+    return {
+      "application":  { templateUrl: templatePath(templateName) },
+      "menu":         { templateUrl: templatePath('menu/not_authenticated.html') }
+    };
+  };
+
+  var NotAuthenticatedAccessState = function(state) {
+    return state;
+  };
+
+  var AuthenticatedAccessState = function(state) {
+    authenticationRule = { data: { shouldBeRedirectedToSignIn: function(user) { return !user.isLoggedIn } }};
+    return _.extend(authenticationRule, state);
+  };
+
+  var RedirectAuthenticatedUserToApp = function(state) {
+    redirectionRule = { data: { shouldBeRedirectedToApp: function(user) { return user.isLoggedIn } }};
+    return _.extend(redirectionRule, state);
+  };
+
+  var Routes = function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/dashboard');
+
+    $stateProvider
+      .state('sign_up', NotAuthenticatedAccessState(RedirectAuthenticatedUserToApp({
+        url: '/sign_up',
+        views: NotLoggedInViews('sign_up.html')
+      })))
+      .state('sign_in', NotAuthenticatedAccessState(RedirectAuthenticatedUserToApp({
+        url: '/sign_in',
+        views: NotLoggedInViews('sign_in.html')
+      })))
+      .state('dashboard', AuthenticatedAccessState({
+        url:   '/dashboard',
+        views: LoggedInViews('dashboard.html')
+      }));
+  };
+
+  angular.module('DeployMyCodes').config(['$stateProvider', '$urlRouterProvider', Routes]);
+})();
