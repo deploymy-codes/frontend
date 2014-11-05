@@ -1,12 +1,14 @@
 (function() {
   var AuthenticationService = function($auth, $q, $rootScope) {
     var authenticationAction = function(provider) {
-      return $q(function(resolve, reject) {
-       $auth.authenticate(provider).then(function(response) {
-         $rootScope.$broadcast('successfullyLogin');
-         resolve(response);
-       });
+      var deferred = $q.defer();
+
+      $auth.authenticate(provider).then(function(response) {
+        $rootScope.$broadcast('successfullyLogin');
+        deferred.resolve(response);
       });
+
+      return deferred.promise;
     };
 
     var logoutAction = function(provider) {

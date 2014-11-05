@@ -16,7 +16,5 @@
 //
 //= require "deploy_my_codes/controllers/authentication_controller"
 //= require "deploy_my_codes/controllers/menu_controller"
-//
-//= require "deploy_my_codes/directives/menu_directive"
 
 angular.module('DeployMyCodes', ['mm.foundation', 'ngResource', 'satellizer', 'ui.router', 'underscore']);

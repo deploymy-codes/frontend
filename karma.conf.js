@@ -2,6 +2,22 @@
 // Generated on Sun Nov 02 2014 13:24:03 GMT+0000 (GMT)
 
 module.exports = function(config) {
+  var singleRun     = false;
+  var includedFiles = [
+    { pattern: 'source/**',                                               watched: true,  included: false, served: false },
+    { pattern: 'bower_components/angular-mocks/angular-mocks.js',         watched: false, included: true,  served: true },
+    { pattern: 'tests/**/*.js',                                           watched: true,  included: true,  served: true }
+  ];
+
+  if (process.env.CI) {
+    applicationJS = { pattern: 'build/assets/javascripts/application.js',                 watched: true,  included: true,  served: true };
+    singleRun     = true;
+  } else {
+    applicationJS = { pattern: 'http://localhost:4567/assets/javascripts/application.js', watched: true,  included: true,  served: true };
+  }
+
+  includedFiles.unshift(applicationJS);
+
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -13,11 +29,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      { pattern: '**/*',                                                    watched: true, included: false, served: false },
-      { pattern: 'http://localhost:4567/assets/javascripts/application.js', watched: true, included: true, served: true },
-      { pattern: 'http://localhost:4567/assets/javascripts/tests.js',       watched: true, included: true, served: true }
-    ],
+    files: includedFiles,
 
 
     // list of files to exclude
@@ -61,6 +73,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: singleRun
   });
 };
