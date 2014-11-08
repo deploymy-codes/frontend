@@ -10,7 +10,12 @@
 //
 //= require_tree "./templates"
 //
-//= require "deploy_my_codes/config/authentication"
+//= require "deploy_my_codes/providers/route_tool_provider"
+//
+//= require "deploy_my_codes/middlewares/already_logged_in_user"
+//= require "deploy_my_codes/middlewares/authenticated_route"
+//= require "deploy_my_codes/middlewares/authorization_in_headers"
+//
 //= require "deploy_my_codes/config/oauth"
 //= require "deploy_my_codes/config/routes"
 //
