@@ -1,12 +1,11 @@
 require 'lib/deploy_my_codes/settings_helpers'
-require 'lib/deploy_my_codes/template_path_helpers'
+require 'lib/deploy_my_codes/middlewares/angular/tilt'
 
 aws_config = YAML.load(File.read(File.join(root, 'aws.yml')))
 
 set :environment, (ENV['MM_ENV'] || :development).to_sym
 
 helpers DeployMyCodes::SettingsHelpers
-helpers DeployMyCodes::TemplatePathHelpers
 
 activate :dotenv
 activate :livereload
@@ -39,4 +38,5 @@ end
 
 after_configuration do
   sprockets.append_path File.join root, 'bower_components'
+  sprockets.append_path File.join root, 'lib/deploy_my_codes/middlewares/angular/assets/javascripts'
 end

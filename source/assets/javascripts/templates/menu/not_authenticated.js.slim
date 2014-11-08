@@ -3,7 +3,7 @@ div ng-controller="MenuCtl"
     ul class="title-area"
       li class="name"
         h1
-          = link_to('/', class: 'm-menu--project-name') do
+          a href="/" class="m-menu--project-name"
             = image_tag('logo.png', class: 'm-menu--logo')
             | deploymy.codes
 

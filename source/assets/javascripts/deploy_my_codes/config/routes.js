@@ -1,22 +1,4 @@
 (function() {
-  var templatePath = function(name) {
-    return '<%= template_path('') %>' + name;
-  };
-
-  var LoggedInViews = function(templateName) {
-    return {
-      "application": { templateUrl: templatePath(templateName) },
-      "menu":        { templateUrl: templatePath('menu/authenticated.html') }
-    };
-  };
-
-  var NotLoggedInViews = function(templateName) {
-    return {
-      "application":  { templateUrl: templatePath(templateName) },
-      "menu":         { templateUrl: templatePath('menu/not_authenticated.html') }
-    };
-  };
-
   var NotAuthenticatedAccessState = function(state) {
     return state;
   };
@@ -32,20 +14,40 @@
   };
 
   var Routes = function($stateProvider, $urlRouterProvider) {
+    var templatePath = function(name) {
+      return ['$templates', '$stateParams', function($templates, $stateParams) {
+        return $templates.get(name);
+      }]
+    };
+
+    var LoggedInViews = function(templateName) {
+      return {
+        "application": { templateProvider: templatePath(templateName) },
+        "menu":        { templateProvider: templatePath('/menu/authenticated') }
+      };
+    };
+
+    var NotLoggedInViews = function(templateName) {
+      return {
+        "application":  { templateProvider: templatePath(templateName) },
+        "menu":         { templateProvider: templatePath('/menu/not_authenticated') }
+      };
+    };
+
     $urlRouterProvider.otherwise('/dashboard');
 
     $stateProvider
       .state('sign_up', NotAuthenticatedAccessState(RedirectAuthenticatedUserToApp({
         url: '/sign_up',
-        views: NotLoggedInViews('sign_up.html')
+        views: NotLoggedInViews('/sign_up')
       })))
       .state('sign_in', NotAuthenticatedAccessState(RedirectAuthenticatedUserToApp({
         url: '/sign_in',
-        views: NotLoggedInViews('sign_in.html')
+        views: NotLoggedInViews('/sign_in')
       })))
       .state('dashboard', AuthenticatedAccessState({
         url:   '/dashboard',
-        views: LoggedInViews('dashboard.html')
+        views: LoggedInViews('/dashboard')
       }));
   };
 

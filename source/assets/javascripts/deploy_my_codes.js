@@ -1,11 +1,14 @@
 //= require "angular"
-//= require "ui-router"
 //= require "angular-resource"
 //= require "angular-underscore"
 //= require "angular-foundation"
 //= require "satellizer"
+//= require "templates"
+//= require "ui-router"
 //
 //= require_self
+//
+//= require_tree "./templates"
 //
 //= require "deploy_my_codes/config/authentication"
 //= require "deploy_my_codes/config/oauth"
@@ -17,4 +20,4 @@
 //= require "deploy_my_codes/controllers/authentication_controller"
 //= require "deploy_my_codes/controllers/menu_controller"
 
-angular.module('DeployMyCodes', ['mm.foundation', 'ngResource', 'satellizer', 'ui.router', 'underscore']);
+angular.module('DeployMyCodes', ['mm.foundation', 'ngResource', 'satellizer', 'templates', 'ui.router', 'underscore']);

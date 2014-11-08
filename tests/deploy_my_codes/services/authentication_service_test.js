@@ -22,10 +22,6 @@ describe('AuthenticationService', function() {
 
       return deferred.promise;
     };
-
-    $httpBackend.whenGET(/assets\/templates/).respond(function() {
-      return [200, '', {}];
-    });
   }));
 
   beforeEach(inject(function(AuthenticationService, $rootScope) {
