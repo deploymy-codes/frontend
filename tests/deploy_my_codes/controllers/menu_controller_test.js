@@ -11,7 +11,7 @@ describe('MenuCtl', function() {
 
   beforeEach(inject(function($q) {
     var users = ['user_1', 'user_1_bis'];
-    FakeUserService.user = function() {
+    FakeUserService.get = function() {
       return $q(function(resolve, reject) {
         userSpy();
         resolve(users.shift());
@@ -22,6 +22,7 @@ describe('MenuCtl', function() {
   beforeEach(inject(function($controller, $rootScope) {
     scope = $rootScope.$new();
     $controller('MenuCtl', { $scope: scope, UserService: FakeUserService });
+    scope.getUser();
     scope.$digest();
   }));
 

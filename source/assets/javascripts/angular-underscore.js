@@ -3,6 +3,6 @@
     return $window._;
   };
 
-  angular.module('underscore', []);
-  angular.module('underscore').service('_', ['$window', Underscore]);
+  angular.module('underscore', [])
+         .service('_', ['$window', Underscore]);
 })();

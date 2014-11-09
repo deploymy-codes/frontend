@@ -19,7 +19,7 @@ module DeployMyCodes
         end
 
         def escape(content)
-          content.gsub(/(\|<\/|\r\n|\342\200\250|\342\200\251|[\n\r"'])/u) {|match| JS_ESCAPE_MAP[match] }
+          content.gsub(/(\|<\/|\r\n|\342\200\250|\342\200\251|[\n\r"'])/u) { |match| JS_ESCAPE_MAP[match] }
         end
 
         def generator

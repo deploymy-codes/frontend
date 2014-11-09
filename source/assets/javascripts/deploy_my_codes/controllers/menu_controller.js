@@ -2,16 +2,14 @@
   var MenuController = function($scope, UserService) {
     $scope.user = {};
 
-    function loadUser() {
-      UserService.user().then(function(current_user) {
-        $scope.user = current_user;
+    $scope.getUser = function() {
+      UserService.get().then(function(user) {
+        $scope.user = user;
       });
     };
 
-    $scope.$on('successfullyLogin',  loadUser);
-    $scope.$on('successfullyLogout', loadUser);
-
-    loadUser();
+    $scope.$on('successfullyLogin',  $scope.getUser);
+    $scope.$on('successfullyLogout', $scope.getUser);
   };
 
   angular.module('DeployMyCodes').controller('MenuCtl', ['$scope', 'UserService', MenuController]);

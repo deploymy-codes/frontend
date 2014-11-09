@@ -4,9 +4,9 @@
       var deferred = $q.defer();
 
       $auth.authenticate(provider).then(function(response) {
-        UserService.register(response.data).then(function() {
+        UserService.register(_.omit(response.data, ['api_key'])).then(function(user) {
           $rootScope.$broadcast('successfullyLogin');
-          deferred.resolve(_.omit(response, ['token']));
+          deferred.resolve(user);
         });
       });
 

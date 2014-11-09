@@ -2,7 +2,7 @@
   var AlreadyLoggedInUser = function($rootScope, $state, UserService) {
     $rootScope.$on('$stateChangeStart', function(event, destinationState) {
       if (!destinationState.data || !angular.isFunction(destinationState.data.shouldBeRedirectedToApp)) return;
-      UserService.user().then(function(user) {
+      UserService.get().then(function(user) {
         var shouldBeRedirectedToApp = destinationState.data.shouldBeRedirectedToApp(user);
 
         if (shouldBeRedirectedToApp) {

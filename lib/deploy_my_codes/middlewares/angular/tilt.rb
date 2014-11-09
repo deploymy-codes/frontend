@@ -7,7 +7,6 @@ module DeployMyCodes
       class Tilt < ::Tilt::Template
         self.default_mime_type = 'application/javascript'
 
-        def prepare; end
         def evaluate(scope, locals, &block)
           html      = Slim.new(scope, data).compile
           file_name = scope.logical_path.inspect.gsub('templates', '')
@@ -17,6 +16,9 @@ module DeployMyCodes
               $templateCache.put(#{file_name}, '#{html}')
             }]);
           TEMPLATE
+        end
+
+        def prepare
         end
       end
     end

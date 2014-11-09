@@ -16,7 +16,7 @@ describe('AuthenticationCtrl', function() {
   beforeEach(inject(function($q) {
     FakeAuthenticationService.authenticate = function(provider) {
       var deferred = $q.defer();
-      if (provider == 'github') {
+      if (provider === 'github') {
         authenticationSpy();
         deferred.resolve({});
       } else {

@@ -3,11 +3,11 @@
     var templatePath = function(name) {
       return ['$templates', '$stateParams', function($templates, $stateParams) {
         return $templates.get(name);
-      }]
+      }];
     };
 
     var AuthenticatedAccessState = function(state) {
-      authenticationRule = { data: { shouldBeRedirectedToSignIn: function(user) { return !user.isLoggedIn } }};
+      var authenticationRule = { data: { shouldBeRedirectedToSignIn: function(user) { return !user.isLoggedIn; } }};
       return _.extend(authenticationRule, state);
     };
 
@@ -30,7 +30,7 @@
     };
 
     var RedirectAuthenticatedUserToApp = function(state) {
-      redirectionRule = { data: { shouldBeRedirectedToApp: function(user) { return user.isLoggedIn } }};
+      var redirectionRule = { data: { shouldBeRedirectedToApp: function(user) { return user.isLoggedIn; } }};
       return _.extend(redirectionRule, state);
     };
 
