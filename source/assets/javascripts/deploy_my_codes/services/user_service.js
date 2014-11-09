@@ -1,48 +1,52 @@
 (function() {
   var UserService = function($auth, $http, $q, $window, _) {
+    var CURRENT_USER_KEY = 'deploy_my_codes_current_user';
+    var NULL_USER        = { isLoggedIn: false };
+
     var createNullUser = function() {
       return _.clone(NULL_USER);
     };
 
-    var loadUser = function(callback) {
-      $http.get('http://localhost:9292/user').success(function(data, status, headers, config) {
-        return callback(data);
-      });
-    };
+    var getUserFromStorage = function() {
+      var stringifiedUser = $window.localStorage[CURRENT_USER_KEY];
+      if (stringifiedUser) {
+        return JSON.parse(stringifiedUser);
+      }
 
-    var CURRENT_USER_KEY = 'deploy_my_codes_current_user';
-    var NULL_USER        = { isLoggedIn: false };
-    var currentUser      = createNullUser();
+      return createNullUser();
+    };
 
     var getUser = function() {
       var deferred = $q.defer();
 
       var token = $auth.getToken();
-      if (token) {
-        stringifiedUser = $window.localStorage[CURRENT_USER_KEY];
-        if (stringifiedUser) {
-          currentUser = JSON.parse(stringifiedUser);
-          deferred.resolve(currentUser);
-        }
-
-        loadUser(function(remote_user) {
-          currentUser                            = _.extend(createNullUser(), remote_user);
-          currentUser.isLoggedIn                 = true;
-          $window.localStorage[CURRENT_USER_KEY] = JSON.stringify(currentUser);
-
-          deferred.resolve(currentUser);
-        });
+      var user  = getUserFromStorage();
+      if (token && user) {
+        currentUser = user;
       } else {
         currentUser = createNullUser();
         delete $window.localStorage[CURRENT_USER_KEY];
-        deferred.resolve(currentUser);
       }
+      deferred.resolve(currentUser);
 
       return deferred.promise;
     };
 
+    var registerUser = function(data) {
+      var deferred                           = $q.defer();
+      currentUser                            = _.extend(createNullUser(), data);
+      currentUser.isLoggedIn                 = true;
+      $window.localStorage[CURRENT_USER_KEY] = JSON.stringify(currentUser);
+      deferred.resolve();
+
+      return deferred.promise;
+    };
+
+    var currentUser = createNullUser();
+
     return {
-      user: getUser
+      user:     getUser,
+      register: registerUser
     };
   };
 

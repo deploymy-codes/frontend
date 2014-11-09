@@ -11,7 +11,7 @@ describe('AuthenticationService', function() {
   beforeEach(inject(function($q, $httpBackend) {
     fakeAuth.authenticate = function(provider) {
       var deferred = $q.defer();
-      deferred.resolve('user token');
+      deferred.resolve({ name: 'John Doe' });
 
       return deferred.promise;
     };
@@ -33,7 +33,7 @@ describe('AuthenticationService', function() {
   describe('when method #authenticate is called', function() {
     it('returns the auth response', function() {
       subject.authenticate('github').then(function(response) {
-        expect(response).to.eql('user token');
+        expect(response).to.eql({ name: 'John Doe' });
       });
       rootScope.$digest();
     });
