@@ -1,0 +1,7 @@
+---
+languages:
+  - ruby
+  - javascript
+excludes:
+  - node_modules
+  - bower_components
