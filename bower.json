@@ -1,11 +1,11 @@
 {
-  "name": "landing_page",
+  "name": "frontend",
   "version": "0.0.1",
-  "homepage": "https://github.com/deploymy-codes/landing_page",
+  "homepage": "https://github.com/deploymy-codes/frontend",
   "authors": [
     "Coders <coders@deploymy.codes>"
   ],
-  "description": "Landing page of deploymy.codes awaiting the glorious website",
+  "description": "Frontend website of deploymy.codes.",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -17,9 +17,18 @@
   ],
   "dependencies": {
     "angular": "~1.3.0",
+    "angular-foundation": "~0.4.0",
     "angular-mailchimp": "*",
-    "foundation": "~5.1.1",
+    "angular-mocks": "~1.3.1",
+    "ui-router": "~0.2.11",
+    "foundation": "~5.4.7",
     "font-awesome": "~4.2.0",
-    "smooth-scroll": "~1.0.1"
+    "modernizr": "~2.8.3",
+    "satellizer": "~0.8.3",
+    "smooth-scroll": "~1.0.1",
+    "underscore": "~1.7.0"
+  },
+  "resolutions": {
+    "angular": "~1.3.0"
   }
 }
