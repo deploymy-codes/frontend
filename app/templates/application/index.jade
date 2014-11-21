@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width")
+    meta(content="IE=edge,chrome=1", http-equiv="X-UA-Compatible")
+    link(href="http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300|Inconsolata", rel="stylesheet", type="text/css")
+    title Deploy My Codes
+    link(rel="stylesheet", type="text/css", href="/assets/application.css")
+
+  body(ng-app="DeployMyCodes")
+    div(ui-view="menu")
+    div(ui-view="application")
+
+    script(type="text/javascript", src="/assets/deploy_my_codes.js")
+    script(type="text/javascript").
+      require('deploy_my_codes')();

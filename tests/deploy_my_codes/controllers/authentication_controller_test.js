@@ -1,21 +1,22 @@
 describe('AuthenticationCtrl', function() {
-  beforeEach(module('DeployMyCodes'));
+  var promise        = require('test_helpers/promise');
+  var describedClass = require('deploy_my_codes/controllers/authentication_controller');
+  var authenticationSpy, dashboardSpy, fakeAuthenticationService, fakeScope, fakeState, logoutSpy, signInSpy, subject;
 
-  var authenticationSpy, dashboardSpy, FakeAuthenticationService, FakeState, logoutSpy, scope, signInSpy;
+  beforeEach(function() {
+    authenticationSpy = sinon.spy();
+    dashboardSpy      = sinon.spy();
+    fakeAuthenticationService = {};
+    fakeScope = {};
+    fakeState = {};
+    logoutSpy = sinon.spy();
+    signInSpy = sinon.spy();
+    subject   = describedClass(fakeScope, fakeState, fakeAuthenticationService);
+  });
 
-  beforeEach(module(function($provide) {
-    FakeAuthenticationService = {};
-    FakeState                 = {};
-    authenticationSpy         = sinon.spy();
-    dashboardSpy              = sinon.spy();
-    logoutSpy                 = sinon.spy();
-    signInSpy                 = sinon.spy();
-    $provide.value('AuthenticationService', FakeAuthenticationService);
-  }));
-
-  beforeEach(inject(function($q) {
-    FakeAuthenticationService.authenticate = function(provider) {
-      var deferred = $q.defer();
+  beforeEach(function() {
+    fakeAuthenticationService.authenticate = function(provider) {
+      var deferred = promise.defer();
       if (provider === 'github') {
         authenticationSpy();
         deferred.resolve({});
@@ -26,14 +27,14 @@ describe('AuthenticationCtrl', function() {
       return deferred.promise;
     };
 
-    FakeAuthenticationService.logout = function(provider) {
-      var deferred = $q.defer();
+    fakeAuthenticationService.logout = function(provider) {
+      var deferred = promise.defer();
       logoutSpy();
       deferred.resolve({});
       return deferred.promise;
     };
 
-    FakeState.go = function(state) {
+    fakeState.go = function(state) {
       switch (state) {
         case 'dashboard':
           dashboardSpy();
@@ -43,18 +44,11 @@ describe('AuthenticationCtrl', function() {
           break;
       }
     };
-  }));
-
-  beforeEach(inject(function($controller, $rootScope) {
-    scope = $rootScope.$new();
-    $controller('AuthenticationCtrl', { $scope: scope, $state: FakeState, AuthenticationService: FakeAuthenticationService });
-    scope.$digest();
-  }));
+  });
 
   describe('when action #authenticate is called', function() {
     it('redirects to the dashboard', function() {
-      scope.authenticate('github');
-      scope.$digest();
+      fakeScope.authenticate('github');
       sinon.assert.calledOnce(authenticationSpy);
       sinon.assert.calledOnce(dashboardSpy);
     });
@@ -62,8 +56,7 @@ describe('AuthenticationCtrl', function() {
 
   describe('when action #authenticate is called', function() {
     it('redirects to the sign in', function() {
-      scope.logout();
-      scope.$digest();
+      fakeScope.logout();
       sinon.assert.calledOnce(logoutSpy);
       sinon.assert.calledOnce(signInSpy);
     });

@@ -1,23 +1,13 @@
-// Karma configuration
-// Generated on Sun Nov 02 2014 13:24:03 GMT+0000 (GMT)
-
 module.exports = function(config) {
-  var applicationJS = {};
-  var singleRun     = false;
   var includedFiles = [
-    { pattern: 'source/**',                                       watched: true,  included: false, served: false },
-    { pattern: 'bower_components/angular-mocks/angular-mocks.js', watched: false, included: true,  served: true },
-    { pattern: 'tests/**/*.js',                                   watched: true,  included: true,  served: true }
+    { pattern: './bower_components/underscore/underscore.js', watched: false, included: true, served: true },
+    { pattern: './bower_components/commonjs-require/commonjs-require.js', watched: false, included: true, served: true },
+    { pattern: 'app/javascripts/dependencies/**/*.js', watched: true,  included: true, served: true },
+    { pattern: 'app/javascripts/deploy_my_codes.js', watched: true,  included: true, served: true },
+    { pattern: 'app/javascripts/deploy_my_codes/**/*.js', watched: true,  included: true, served: true },
+    { pattern: 'tests/test_helpers/**/*.js', watched: true,  included: true,  served: true },
+    { pattern: 'tests/**/*.js', watched: true,  included: true,  served: true }
   ];
-
-  if (process.env.CI) {
-    applicationJS = { pattern: 'build/assets/javascripts/application.js',                 watched: true,  included: true,  served: true };
-    singleRun     = true;
-  } else {
-    applicationJS = { pattern: 'http://localhost:4567/assets/javascripts/application.js', watched: true,  included: true,  served: true };
-  }
-
-  includedFiles.unshift(applicationJS);
 
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -74,6 +64,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: singleRun
+    // singleRun: true
   });
 };

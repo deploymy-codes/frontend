@@ -1,55 +1,53 @@
 describe('MenuCtl', function() {
-  beforeEach(module('DeployMyCodes'));
+  var scope          = require('test_helpers/scope');
+  var promise        = require('test_helpers/promise');
+  var describedClass = require('deploy_my_codes/controllers/menu_controller');
+  var fakeUserService, fakeScope, subject, userSpy;
 
-  var FakeUserService, scope, userSpy;
+  beforeEach(function() {
+    fakeScope = scope();
+    fakeUserService = {};
+    userSpy   = sinon.spy();
+    subject   = describedClass(fakeScope, fakeUserService);
+  });
 
-  beforeEach(module(function($provide) {
-    userSpy = sinon.spy();
-    FakeUserService = {};
-    $provide.value('UserService', FakeUserService);
-  }));
-
-  beforeEach(inject(function($q) {
+  beforeEach(function() {
     var users = ['user_1', 'user_1_bis'];
-    FakeUserService.get = function() {
-      return $q(function(resolve, reject) {
-        userSpy();
-        resolve(users.shift());
-      });
-    };
-  }));
+    fakeUserService.get = function() {
+      var deferred = promise.defer();
+      userSpy();
+      deferred.resolve(users.shift());
 
-  beforeEach(inject(function($controller, $rootScope) {
-    scope = $rootScope.$new();
-    $controller('MenuCtl', { $scope: scope, UserService: FakeUserService });
-    scope.getUser();
-    scope.$digest();
-  }));
+      return deferred.promise;
+    };
+  });
+
+  beforeEach(function() {
+    fakeScope.getUser();
+  });
 
   describe('when controller is Loaded', function() {
     it('loads the current user on startup', function() {
       sinon.assert.calledOnce(userSpy);
-      expect(scope.user).to.eql('user_1');
+      expect(fakeScope.user).to.eql('user_1');
     });
   });
 
   describe('when "successfullyLogin" message is brodacast', function() {
     it('reloads the current user', function() {
-      expect(scope.user).to.eql('user_1');
-      scope.$broadcast('successfullyLogin');
-      scope.$digest();
+      expect(fakeScope.user).to.eql('user_1');
+      fakeScope.$broadcast('successfullyLogin');
       sinon.assert.calledTwice(userSpy);
-      expect(scope.user).to.eql('user_1_bis');
+      expect(fakeScope.user).to.eql('user_1_bis');
     });
   });
 
   describe('when "successfullyLogout" message is brodacast', function() {
     it('reloads the current user', function() {
-      expect(scope.user).to.eql('user_1');
-      scope.$broadcast('successfullyLogout');
-      scope.$digest();
+      expect(fakeScope.user).to.eql('user_1');
+      fakeScope.$broadcast('successfullyLogout');
       sinon.assert.calledTwice(userSpy);
-      expect(scope.user).to.eql('user_1_bis');
+      expect(fakeScope.user).to.eql('user_1_bis');
     });
   });
 });
