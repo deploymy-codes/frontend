@@ -17,15 +17,19 @@ require.register('test_helpers/promise', function(exports, require, module){
       value = rejectedValue;
     };
 
+    var then = function(successCallback, errorCallback, notifyCallback) {
+      if (notifyCallback) notificationValues.forEach(notifyCallback);
+      if (isOK && successCallback) return successCallback(value);
+      if (!isOK && errorCallback) return errorCallback(value);
+    };
+
+    var onError = function(errorCallback) {
+      return then(undefined, errorCallback, undefined);
+    };
+
     var promise = {
-      then: function(successCallback, errorCallback, notifyCallback) {
-              if (notifyCallback) notificationValues.forEach(notifyCallback);
-              if (isOK && successCallback) return successCallback(value);
-              if (!isOK && errorCallback) return errorCallback(value);
-            },
-      catch: function(errorCallback) {
-               return then(undefined, errorCallback, undefined);
-             }
+      then:  then,
+      catch: onError
     };
 
     return {
@@ -33,7 +37,7 @@ require.register('test_helpers/promise', function(exports, require, module){
       resolve: resolve,
       reject:  reject,
       promise: promise
-    }
+    };
   };
 
   module.exports = {

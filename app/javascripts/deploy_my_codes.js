@@ -16,5 +16,5 @@ require.register('deploy_my_codes', function(exports, require, module){
            .service('UserService', ['$auth', '$q', 'LocalStorage', require('deploy_my_codes/services/user_service')])
            .controller('AuthenticationCtrl', ['$scope', '$state', 'AuthenticationService', require('deploy_my_codes/controllers/authentication_controller')])
            .controller('MenuCtl', ['$scope', 'UserService', require('deploy_my_codes/controllers/menu_controller')])
-  }
+  };
 });

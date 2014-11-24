@@ -1,5 +1,7 @@
 require.register('deploy_my_codes/services/user_service', function(exports, require, module){
   module.exports = function($auth, $q, LocalStorage) {
+    var _ =  require('underscore');
+
     var CURRENT_USER_KEY = 'deploy_my_codes_current_user';
     var NULL_USER        = { isLoggedIn: false };
 

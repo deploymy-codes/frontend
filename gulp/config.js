@@ -64,4 +64,4 @@ module.exports = {
   tests: {
     configFile: root + '/karma.conf.js'
   }
-}
+};

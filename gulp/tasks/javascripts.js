@@ -10,9 +10,9 @@ gulp.task('javascripts', function() {
   var pathModifier = function (path) {
     path = path.replace(/.js$/, '');
     path = path.replace(/.jade$/, '');
-    path = path.replace(/.*\/javascripts\//, '')
-    path = path.replace(/.*\/bower_components\/.*\//, '')
-    return path
+    path = path.replace(/.*\/javascripts\//, '');
+    path = path.replace(/.*\/bower_components\/.*\//, '');
+    return path;
   };
 
   var createBundle = function(bundleConfig) {
