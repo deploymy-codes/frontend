@@ -1,23 +1,38 @@
 {
-  "name": "frontend",
-  "description": "Frontend website of deploymy.codes.",
-  "author": "Coders <coders@deploymy.codes>",
+  "name": "deploymycodes-frontend",
+  "description": "frontend app for Deploy My Codes",
   "version": "0.0.1",
-  "homepage": "http://www.deploymy.codes",
   "repository": {
     "type": "git",
-    "url": "git@github.com:deploymy-codes/frontend"
+    "url": "https://github.com/deploymy-codes/frontend"
   },
-  "scripts": {
-    "test": "./node_modules/karma/bin/karma start"
-  },
-  "dependencies": {
-    "karma": "~ 0.12.24"
-  },
+  "scripts": {},
+  "dependencies": {},
   "devDependencies": {
-    "karma-mocha": "~ 0.1.9",
-    "karma-phantomjs-launcher": "~ 0.1.4",
-    "karma-sinon-chai": "~ 0.2.0",
-    "mocha": "~ 2.0.1"
+    "browser-sync": "^1.7.0",
+    "gulp": "^3.8.10",
+    "gulp-bower": "0.0.7",
+    "gulp-changed": "^1.0.0",
+    "gulp-concat": "^2.4.1",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-jade": "^0.9.0",
+    "gulp-preprocess": "^1.1.1",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-wrap-commonjs": "^0.1.11",
+    "jade": "^1.7.0",
+    "jadeify": "^3.0.0",
+    "karma": "^0.12.25",
+    "karma-commonjs": "0.0.12",
+    "karma-mocha": "^0.1.9",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon-chai": "^0.2.0",
+    "lodash": "^2.4.1",
+    "map-stream": "0.0.5",
+    "merge-stream": "^0.1.6",
+    "mocha": "^2.0.1",
+    "preprocess": "^2.1.0",
+    "require-dir": "^0.1.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.1.1"
   }
 }

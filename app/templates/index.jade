@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width")
+    meta(content="IE=edge,chrome=1", http-equiv="X-UA-Compatible")
+    link(href="http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300|Inconsolata", rel="stylesheet", type="text/css")
+    title Deployment without the hassle - Deploy My Codes
+    link(rel="stylesheet", type="text/css", href="/assets/home.css")
+  body(ng-app="DeployMyCodes")
+    div(class="m-landing")
+      a(class="m-landing--project-name", href="/")
+        img(src="/assets/logo.png", class="m-landing--logo")
+        &nbsp;
+        | deploymy.codes
+
+      ul(class="m-landing--social")
+        li
+          a(class="m-landing--social--button", href="https://twitter.com/deploymycodes")
+            i(class="fa fa-twitter")
+
+      div(class="row m-landing--panel")
+        div(class="large-12 columns text-center")
+          h2(class="m-landing--title").
+            Deployment has never been so easy.
+
+          p(class="m-landing--explanation").
+            No need to send Armstrong on the moon
+            br
+            Deploy is now as easy as a click.
+
+          a(href="/application#/sign_up", class="button callout").
+            Register for free
+
+    script(type="text/javascript", src="/assets/home.js")
