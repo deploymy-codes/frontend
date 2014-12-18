@@ -7,6 +7,7 @@ git clone git@github.com:deploymy-codes/frontend
 cd frontend
 bundle
 npm install -g bower gulp
+brew install phantomjs
 bower install
 npm install
 cp gulp/aws.yml{.sample,}

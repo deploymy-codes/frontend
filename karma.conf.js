@@ -5,8 +5,8 @@ module.exports = function(config) {
     { pattern: 'app/javascripts/dependencies/**/*.js', watched: true,  included: true, served: true },
     { pattern: 'app/javascripts/deploy_my_codes.js', watched: true,  included: true, served: true },
     { pattern: 'app/javascripts/deploy_my_codes/**/*.js', watched: true,  included: true, served: true },
-    { pattern: 'tests/test_helpers/**/*.js', watched: true,  included: true,  served: true },
-    { pattern: 'tests/**/*.js', watched: true,  included: true,  served: true }
+    { pattern: 'tests/units/test_helpers/**/*.js', watched: true,  included: true,  served: true },
+    { pattern: 'tests/units/**/*.js', watched: true,  included: true,  served: true }
   ];
 
   config.set({
