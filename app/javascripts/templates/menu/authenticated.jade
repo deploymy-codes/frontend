@@ -1,21 +1,16 @@
-div(ng-controller="MenuCtl", ng-init="getUser()")
-  top-bar
-    ul(class="title-area")
-      li(class="name")
-        h1
-          a(ui-sref="dashboard", class='m-menu--project-name')
-            img(src="/assets/logo.png", class="m-menu--logo")
-            &nbsp;
-            | deploymy.codes
+ul(class="m-menu vertical menu-bar dark", ng-controller="MenuCtl", ng-init="getUser()")
+  li(class="m-menu--project-element")
+    a(ui-sref="dashboard", class="m-menu--link-with-picture", title="Home")
+      img(src="/assets/logo.png", alt="deploymy.codes", title="deploymy.codes")
 
-      li(toggle-top-bar="", class="toggle-topbar menu-icon")
-        a(href="#")
-          span Menu
+  li
+    a(class="m-menu--link m-menu--link-with-picture m-menu--link-with-profile-picture", href="#", title="Profile")
+      img(ng-src="{{:: user.avatar }}")
 
-    top-bar-section
-      ul(class="right", ng-controller="AuthenticationCtrl")
-        li(has-dropdown="")
-          a(href="#") {{ user.name }}
-          ul(top-bar-dropdown="")
-            li
-              a(href="#", ng-click="logout()") Sign out
+  li
+    a(class="m-menu--link m-menu--link-with-icon", ui-sref="remote-projects", title="Add a project")
+      i(class="fa fa-plus-circle")
+
+  li(ng-controller="AuthenticationCtrl")
+    a(class="m-menu--link m-menu--link-with-icon", href="#", ng-click="logout()", title="Sign out")
+      i(class="fa fa-sign-out")

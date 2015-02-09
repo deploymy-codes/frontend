@@ -7,6 +7,7 @@ html(lang="en")
     link(href="http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300|Inconsolata", rel="stylesheet", type="text/css")
     title Deployment without the hassle - Deploy My Codes
     link(rel="stylesheet", type="text/css", href="/assets/home.css")
+    base(href="/")
   body(ng-app="DeployMyCodes")
     div(class="m-landing")
       a(class="m-landing--project-name", href="/")
@@ -29,7 +30,7 @@ html(lang="en")
             br
             Deploy is now as easy as a click.
 
-          a(href="/application#/sign_up", class="button callout").
+          a(href="https://github.com/login/oauth/authorize?client_id=da3c2c42130e5391041f", class="button callout").
             Register for free
 
     script(type="text/javascript", src="/assets/home.js")

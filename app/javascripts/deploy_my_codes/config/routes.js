@@ -3,17 +3,16 @@ require.register('deploy_my_codes/config/routes', function(exports, require, mod
     $urlRouterProvider.otherwise('/dashboard');
 
     $stateProvider
-      .state('sign_up', RouteToolProvider.notAuthenticatedAccessState(RouteToolProvider.redirectAuthenticatedUserToApp({
-        url: '/sign_up',
-        views: RouteToolProvider.notLoggedInViews('/sign_up')
-      })))
-      .state('sign_in', RouteToolProvider.notAuthenticatedAccessState(RouteToolProvider.redirectAuthenticatedUserToApp({
-        url: '/sign_in',
-        views: RouteToolProvider.notLoggedInViews('/sign_in')
-      })))
+      .state('authorize', RouteToolProvider.authorizeUser({
+        url: '/authorize'
+      }))
       .state('dashboard', RouteToolProvider.authenticatedAccessState({
         url:   '/dashboard',
         views: RouteToolProvider.loggedInViews('/dashboard')
+      }))
+      .state('remote-projects', RouteToolProvider.authenticatedAccessState({
+        url:   '/remote-projects',
+        views: RouteToolProvider.loggedInViews('/remote_projects')
       }));
   };
 });

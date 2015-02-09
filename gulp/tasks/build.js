@@ -1,3 +1,3 @@
 var gulp = require('gulp');
 
-gulp.task('build', ['javascripts', 'static_templates', 'stylesheets']);
+gulp.task('build', ['javascripts', 'templates', 'stylesheets']);
