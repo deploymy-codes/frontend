@@ -7,12 +7,10 @@ html(lang="en")
     link(href="http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300|Inconsolata", rel="stylesheet", type="text/css")
     title Deploy My Codes
     link(rel="stylesheet", type="text/css", href="/assets/application.css")
-    base(href="/")
 
   body(ng-app="DeployMyCodes")
-    div(class="grid-frame")
-      div(class="grid-block shrink", ui-view="menu")
-      div(class="grid-block m-application", ui-view="application")
+    div(ui-view="menu")
+    div(ui-view="application")
 
     script(type="text/javascript", src="/assets/deploy_my_codes.js")
     script(type="text/javascript").

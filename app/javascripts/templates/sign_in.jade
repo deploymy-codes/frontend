@@ -1,0 +1,22 @@
+div(class="row m-sign_in")
+
+div(class="row m-providers", ng-controller="AuthenticationCtrl")
+  div(class="medium-6 columns text-center")
+    div
+      i(class="fa fa-github m-provider--logo")
+    button(class="button large callout", ng-click="authenticate('github')").
+      sign in with github
+
+  div(class="medium-6 columns text-center")
+    div
+      i(class="fa fa-bitbucket m-provider--logo")
+    button(class="button large callout", ng-click="authenticate('bitbucket')").
+      sign in with bitbucket
+
+div(class="row")
+  div(class="small-12 columns text-center")
+    p
+      | Don't have account?
+      &nbsp;
+      a(ui-sref="sign_up").
+        I want to sign up

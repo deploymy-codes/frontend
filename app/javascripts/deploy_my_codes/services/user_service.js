@@ -1,5 +1,5 @@
 require.register('deploy_my_codes/services/user_service', function(exports, require, module){
-  module.exports = function($q, LocalStorage) {
+  module.exports = function($auth, $q, LocalStorage) {
     var _ =  require('underscore');
 
     var CURRENT_USER_KEY = 'deploy_my_codes_current_user';
@@ -12,11 +12,13 @@ require.register('deploy_my_codes/services/user_service', function(exports, requ
     var getUser = function() {
       var deferred = $q.defer();
 
+      var token = $auth.getToken();
       var user  = LocalStorage.get(CURRENT_USER_KEY);
-      if (user && user.isLoggedIn) {
+      if (token && user && user.isLoggedIn) {
         currentUser = user;
       } else {
-        removeUser();
+        currentUser = createNullUser();
+        LocalStorage.remove(CURRENT_USER_KEY);
       }
       deferred.resolve(currentUser);
 
@@ -33,21 +35,11 @@ require.register('deploy_my_codes/services/user_service', function(exports, requ
       return deferred.promise;
     };
 
-    var removeUser = function() {
-      var deferred = $q.defer();
-      currentUser  = createNullUser();
-      LocalStorage.remove(CURRENT_USER_KEY);
-      deferred.resolve();
-
-      return deferred.promise;
-    };
-
     var currentUser = createNullUser();
 
     return {
       get:      getUser,
-      register: registerUser,
-      remove:   removeUser
+      register: registerUser
     };
   };
 });

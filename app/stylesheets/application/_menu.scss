@@ -1,51 +1,7 @@
-.m-menu {
-  margin-bottom: 0;
-
-  li {
-    flex-grow: 0;
-  }
-
-  a.m-menu--link {
-    font-size: 1.4rem;
-    &:hover::After {
-      content: attr(title);
-      background: #232323;
-      padding: 0.5rem 0.8rem;
-      margin-left: 24px;
-      border-radius: 15px;
-      margin-top: -5px;
-      font-size: .9rem;
-      opacity: 0.9;
-      position: fixed;
-    }
-  }
-
-  .m-menu--link-with-picture {
-    img {
-      height: 40px;
-      width:  40px;
-      margin: 0px;
-    }
-  }
-
-  .m-menu--link-with-profile-picture {
-    img {
-      border-radius: 40px;
-    }
-  }
-
-  .m-menu--link-with-icon {
-    padding-bottom: 1.5rem;
-    padding-top:    1.5rem;
-
-    i {
-      font-size:    0.9rem;
-      margin-left:  auto;
-      margin-right: auto;
-    }
-  }
-
-  .m-menu--project-element {
-    flex: 0 1 5.5rem;
-  }
+.m-menu--logo {
+  width: 50px;
+  margin: 0.5em;
+}
+.m-menu--project-name {
+  font-family: "Inconsolata";
 }

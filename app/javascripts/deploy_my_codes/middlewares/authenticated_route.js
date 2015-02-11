@@ -7,7 +7,7 @@ require.register('deploy_my_codes/middlewares/authenticated_route', function(exp
 
         if (shouldBeRedirectedToSignIn) {
           event.preventDefault();
-          location.href = '/'
+          $state.go('sign_in', {});
         }
       });
     });

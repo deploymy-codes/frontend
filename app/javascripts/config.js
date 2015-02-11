@@ -5,8 +5,15 @@ require.register('config', function(exports, require, module){
 
     return {
       development: {
+        api: {
+          tokenName: 'api_key',
+        },
         github: {
-          apiAuthenticationURL: 'http://localhost:5000/auth/github'
+          clientId: 'da3c2c42130e5391041f',
+          apiAuthenticationURL: 'http://localhost:9292/auth?provider=github'
+        },
+        session: {
+          prefix: 'deploy_my_codes'
         }
       },
       production:  {},

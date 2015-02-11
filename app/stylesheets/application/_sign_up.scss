@@ -1,0 +1,27 @@
+.m-sign_up--title-wrapper {
+  @media #{$small-only} {
+    background:          url(image-path('sign_up-small.jpg')) no-repeat;
+    background-position: center bottom;
+  }
+
+  @media #{$medium-only} {
+    background:          url(image-path('sign_up-medium.jpg')) no-repeat;
+    background-position: center bottom;
+  }
+
+  @media #{$large-up} {
+    background:          url(image-path('sign_up-large.jpg')) no-repeat;
+    background-position: center bottom;
+  }
+  height:        300px;
+  margin-bottom: 4em;
+  position:      relative;
+}
+
+.m-sign_up--title {
+  color:       $sign_up--title-color;
+  font-weight: bold;
+  position:    relative;
+  top:         50%;
+  transform:   translateY(-50%);
+}
