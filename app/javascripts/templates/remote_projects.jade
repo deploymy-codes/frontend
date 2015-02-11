@@ -1,9 +1,9 @@
-section(class="block-list", ng-controller="RemoteProjectsCtl")
+section(class="block-list small-12 medium-6 grid-content", ng-controller="RemoteProjectsCtl")
   header
     | remote projects
 
-  ul(class="m-remote-project", ng-repeat="project in projects")
-    li
+  ul(class="m-remote-project")
+    li(ng-repeat="project in projects")
       span
         | {{:: project.name }}
 

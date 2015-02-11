@@ -12,11 +12,14 @@ require.register('deploy_my_codes', function(exports, require, module){
            .run(['$rootScope', '$state', '$window', 'AuthenticationService', require('deploy_my_codes/middlewares/authorize_user')])
            .run(['$rootScope', '$state', 'UserService', require('deploy_my_codes/middlewares/authenticated_route')])
            .run(['$injector', require('deploy_my_codes/middlewares/authorization_in_headers')])
-           .service('AuthenticationRepository', ['$http', '$q', 'config', require('deploy_my_codes/repositories/authentication_repository')])
+           .service('APIHelper', ['config', require('deploy_my_codes/helpers/api_helper')])
+           .service('AuthenticationRepository', ['$http', '$q', 'APIHelper', require('deploy_my_codes/repositories/authentication_repository')])
+           .service('ProjectRepository', ['$http', '$q', 'APIHelper', require('deploy_my_codes/repositories/project_repository')])
            .service('AuthenticationService', ['$q', '$rootScope', 'AuthenticationRepository', 'UserService', require('deploy_my_codes/services/authentication_service')])
            .service('UserService', ['$q', 'LocalStorage', require('deploy_my_codes/services/user_service')])
+           .service('ProjectService', ['$q', 'ProjectRepository', require('deploy_my_codes/services/project_service')])
            .controller('AuthenticationCtrl', ['$scope', '$state', 'AuthenticationService', require('deploy_my_codes/controllers/authentication_controller')])
            .controller('MenuCtl', ['$scope', 'UserService', require('deploy_my_codes/controllers/menu_controller')])
-           .controller('RemoteProjectsCtl', ['$scope', '$state', require('deploy_my_codes/controllers/remote_projects_controller')])
+           .controller('RemoteProjectsCtl', ['$scope', 'ProjectService', require('deploy_my_codes/controllers/remote_projects_controller')])
   };
 });

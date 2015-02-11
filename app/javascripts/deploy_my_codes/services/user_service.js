@@ -12,7 +12,7 @@ require.register('deploy_my_codes/services/user_service', function(exports, requ
     var getUser = function() {
       var deferred = $q.defer();
 
-      var user  = LocalStorage.get(CURRENT_USER_KEY);
+      var user = LocalStorage.get(CURRENT_USER_KEY);
       if (user && user.isLoggedIn) {
         currentUser = user;
       } else {

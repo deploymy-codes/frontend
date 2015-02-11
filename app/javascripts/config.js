@@ -5,8 +5,8 @@ require.register('config', function(exports, require, module){
 
     return {
       development: {
-        github: {
-          apiAuthenticationURL: 'http://localhost:5000/auth/github'
+        api: {
+          rootURL: 'http://localhost:5000'
         }
       },
       production:  {},
