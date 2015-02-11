@@ -1,17 +1,16 @@
 require.register('deploy_my_codes/services/authentication_service', function(exports, require, module){
-  module.exports = function($q, $rootScope, AuthenticationRepository, UserService) {
+  module.exports = function($auth, $q, $rootScope, UserService) {
     var _ = require('underscore');
 
-    var authenticationAction = function(code) {
+    var authenticationAction = function(provider) {
       var deferred = $q.defer();
 
-      AuthenticationRepository.save(code)
-        .then(function(data) {
-          UserService.register(data).then(function(user) {
-            $rootScope.$broadcast('successfullyLogin');
-            deferred.resolve(user);
-          });
+      $auth.authenticate(provider).then(function(response) {
+        UserService.register(_.omit(response.data, ['api_key'])).then(function(user) {
+          $rootScope.$broadcast('successfullyLogin');
+          deferred.resolve(user);
         });
+      });
 
       return deferred.promise;
     };
@@ -19,10 +18,10 @@ require.register('deploy_my_codes/services/authentication_service', function(exp
     var logoutAction = function() {
       var deferred = $q.defer();
 
-      UserService.remove().then(function() {
-        $rootScope.$broadcast('successfullyLogout');
-        deferred.resolve();
-      });
+       $auth.logout().then(function(response) {
+         $rootScope.$broadcast('successfullyLogout');
+         deferred.resolve(response);
+       });
 
       return deferred.promise;
     };

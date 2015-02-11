@@ -10,8 +10,7 @@ gulp.task('stylesheets', ['fonts', 'images'], function () {
                style:      'expanded',
                bundleExec: true,
                loadPath:   [
-                 config.bowerSrc,
-                 config.bowerSrc + '/foundation-apps/scss',
+                 config.bowerSrc + '/foundation/scss',
                  config.bowerSrc + '/font-awesome/scss',
                ]
              }))

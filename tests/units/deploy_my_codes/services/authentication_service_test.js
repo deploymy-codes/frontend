@@ -6,17 +6,24 @@ describe('AuthenticationService', function() {
   var broadcastSpy, fakeAuth, fakeScope, fakeUserService, subject, userSpy;
 
   beforeEach(function() {
-    fakeAuth        = { save: function() {} };
+    fakeAuth        = { getToken: function() {} };
     fakeScope       = scope();
-    fakeUserService = { register: function() {}, user: function() {}, remove: function() {} };
+    fakeUserService = { register: function() {}, user: function() {} };
     userSpy         = sinon.spy();
-    subject         = describedClass(promise, fakeScope, fakeAuth, fakeUserService);
+    subject         = describedClass(fakeAuth, promise, fakeScope, fakeUserService);
   });
 
   beforeEach(function() {
-    fakeAuth.save = function(code) {
+    fakeAuth.authenticate = function(provider) {
       var deferred = promise.defer();
-      deferred.resolve({ api_key: 'XXXX-XXXX-XXXX-XXXX', name: 'John Doe' });
+      deferred.resolve({ data: { api_key: 'XXXX-XXXX-XXXX-XXXX', name: 'John Doe' }});
+
+      return deferred.promise;
+    };
+
+    fakeAuth.logout = function() {
+      var deferred = promise.defer();
+      deferred.resolve('some data');
 
       return deferred.promise;
     };
@@ -28,9 +35,9 @@ describe('AuthenticationService', function() {
       return deferred.promise;
     };
 
-    fakeUserService.remove = function() {
+    fakeUserService.get = function() {
       var deferred = promise.defer();
-      deferred.resolve();
+      deferred.resolve({ name: 'John Doe' });
       return deferred.promise;
     };
   });
@@ -41,25 +48,31 @@ describe('AuthenticationService', function() {
 
   describe('when method #authenticate is called', function() {
     it('returns the auth response', function() {
-      subject.authenticate('1337-42').then(function(response) {
-        expect(response).to.eql({ api_key: 'XXXX-XXXX-XXXX-XXXX', name: 'John Doe' });
+      subject.authenticate('github').then(function(response) {
+        expect(response).to.eql({ name: 'John Doe' });
       });
     });
 
     it('registers the user as current user', function() {
-      subject.authenticate('1337-42').then(function(response) { });
+      subject.authenticate('github').then(function(response) { });
       expect(userSpy).to.have.been.called;
     });
 
     it('broadcasts a successfullyLogin event', function() {
-      subject.authenticate('1337-42').then(function(response) { });
+      subject.authenticate('github').then(function(response) { });
       expect(broadcastSpy).to.have.been.calledWith('successfullyLogin');
     });
   });
 
   describe('when method #logout is called', function() {
+    it('returns the auth response', function() {
+      subject.logout().then(function(response) {
+        expect(response).to.eql('some data');
+      });
+    });
+
     it('broadcasts a successfullyLogout event', function() {
-      subject.logout().then(function() { });
+      subject.logout().then(function(response) { });
       expect(broadcastSpy).to.have.been.calledWith('successfullyLogout');
     });
   });

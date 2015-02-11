@@ -10,8 +10,8 @@
     "commonjs-require": "~1.4.5",
     "font-awesome": "~4.2.0",
     "foundation": "~5.4.7",
-    "foundation-apps": "~ 1.0.2",
     "modernizr": "~2.8.3",
+    "satellizer": "~0.8.3",
     "smooth-scroll": "~1.0.1",
     "ui-router": "~0.2.11",
     "underscore": "~1.7.0"

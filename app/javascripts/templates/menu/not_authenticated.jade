@@ -1,0 +1,18 @@
+div(ng-controller="MenuCtl")
+  top-bar
+    ul(class="title-area")
+      li(class="name")
+        h1
+          a(href="/", class="m-menu--project-name")
+            img(src="/images/logo.png", class="m-menu--logo")
+            | deploymy.codes
+
+      li(toggle-top-bar="", class="toggle-topbar menu-icon")
+        a(href="#")
+          span Menu
+
+    top-bar-section
+      ul(class="right")
+        li
+          a(ui-sref="sign_in").
+            sign in
