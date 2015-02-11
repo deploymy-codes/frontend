@@ -30,15 +30,23 @@ module.exports = {
     },
     bundleConfigs: [{
       src: {
-        templates: baseSrc + '/javascripts/templates/**',
         javascripts: [
           bowerSrc + '/jquery/dist/jquery.js',
           bowerSrc + '/angular/angular.js',
           bowerSrc + '/angular-foundation/mm-foundation-tpls.js',
           bowerSrc + '/angular-resource/angular-resource.js',
           bowerSrc + '/foundation/js/foundation.js',
+          // Foundation Apps
+          bowerSrc + '/fastclick/lib/fastclick.js',
+          bowerSrc + '/viewport-units-buggyfill/viewport-units-buggyfill.js',
+          bowerSrc + '/tether/tether.js',
+          bowerSrc + '/angular-animate/angular-animate.js',
+          bowerSrc + '/foundation-apps/js/vendor/**/*.js',
+          bowerSrc + '/foundation-apps/js/angular/components/**/*.js',
+          bowerSrc + '/foundation-apps/js/angular/services/foundation.core.js',
+          bowerSrc + '/foundation-apps/js/angular/foundation.js',
+          // End of Foundation Apps
           bowerSrc + '/modernizr/modernizr.js',
-          bowerSrc + '/satellizer/satellizer.js',
           bowerSrc + '/ui-router/release/angular-ui-router.js',
           bowerSrc + '/underscore/underscore.js',
           baseSrc + '/javascripts/dependencies/**/*.js',
@@ -52,9 +60,22 @@ module.exports = {
       outputName: 'deploy_my_codes.js',
     }]
   },
-  static_templates: {
-    src:  baseSrc + '/templates/**/*.jade',
-    dest: baseDest
+  templates: {
+    static: {
+      src: baseSrc + '/templates/**/*.jade',
+      dest: baseDest
+    },
+    javascript: {
+      src: {
+        jade: [
+          baseSrc + '/javascripts/templates/**',
+        ],
+        html: [
+          bowerSrc + '/foundation-apps/js/angular/**/*.html',
+        ]
+      },
+      dest: baseDest
+    }
   },
   stylesheets: {
     src:       baseSrc +  '/stylesheets/**/*.scss',
