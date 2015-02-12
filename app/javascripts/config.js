@@ -6,7 +6,7 @@ require.register('config', function(exports, require, module){
     return {
       development: {
         api: {
-          rootURL: 'http://localhost:5000'
+          rootURL: 'http://dev.api.deploymy.codes:5000'
         }
       },
       production:  {},

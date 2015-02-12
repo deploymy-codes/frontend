@@ -1,8 +1,8 @@
+require 'billy/rspec'
 require 'rspec'
 require 'capybara/poltergeist'
 require 'capybara/rspec'
 require 'pry'
-require 'vcr'
 
 Dir['./tests/behaviours/spec_helpers/**/*.rb'].each(&method(:require))
 
@@ -17,16 +17,23 @@ Capybara.app = Rack::Builder.new do
   }
 end
 
+Billy.configure do |config|
+  config.logger = nil
+  config.cache = true
+  config.ignore_params = [
+    'http://fonts.googleapis.com/css?family=Source+Sans+Pro%7COpen+Sans:300italic,400italic,600italic,700italic,400,600,700,300%7CInconsolata',
+    'https//avatars.githubusercontent.com:443/u/822839?v=3'
+  ]
+  config.persist_cache = true
+  config.cache_path = 'tests/behaviours/cassettes/'
+end
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include Capybara::DSL
   config.include AuthenticationHelper
+
   config.before(:each) { sign_out_user }
 end
 
-VCR.configure do |config|
-  config.cassette_library_dir     = './tests/behaviours/cassettes'
-  config.default_cassette_options = { record: :new_episodes }
-end
-
-Capybara.default_driver = :poltergeist
+Capybara.default_driver = :poltergeist_billy
