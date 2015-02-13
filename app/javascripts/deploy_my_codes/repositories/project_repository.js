@@ -1,6 +1,6 @@
 require.register('deploy_my_codes/repositories/project_repository', function(exports, require, module) {
   module.exports = function($http, $q, APIHelper) {
-    var findRemoteProjects = function() {
+    var listRemoteProjects = function() {
       var deferred = $q.defer();
 
       $http.get(APIHelper.buildURL('/users/remote_projects'))
@@ -10,7 +10,7 @@ require.register('deploy_my_codes/repositories/project_repository', function(exp
     };
 
     return {
-      findRemoteProjects: findRemoteProjects
+      listRemoteProjects: listRemoteProjects
     }
   };
 });
