@@ -5,6 +5,7 @@ $gossamer:  #079a69;
 $turquoise: #39e7ac;
 $white:     #ffffff;
 $black:     #333333;
+$grey:      #f4f4f4;
 
 $callout-color: $cinnabar;
 $landing-color: $white;
@@ -14,3 +15,6 @@ $project-name-color: $white;
 $shadow-color: $black;
 $field-color: lighten($black, 60%);
 $field-focus-color: $cinnabar;
+$m-add_project-organization-background--selected: $grey;
+$m-menu-link-background--hover: darken($black, 6%);
+$m-menu-link-separator: $black;

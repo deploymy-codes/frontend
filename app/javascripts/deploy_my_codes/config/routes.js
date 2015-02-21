@@ -10,9 +10,9 @@ require.register('deploy_my_codes/config/routes', function(exports, require, mod
         url:   '/dashboard',
         views: RouteToolProvider.loggedInViews('/dashboard')
       }))
-      .state('remote-projects', RouteToolProvider.authenticatedAccessState({
-        url:   '/remote-projects',
-        views: RouteToolProvider.loggedInViews('/remote_projects')
+      .state('add-project', RouteToolProvider.authenticatedAccessState({
+        url:   '/add-project',
+        views: RouteToolProvider.loggedInViews('/add-project')
       }));
   };
 });

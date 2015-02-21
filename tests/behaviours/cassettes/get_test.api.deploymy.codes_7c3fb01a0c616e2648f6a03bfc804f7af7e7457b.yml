@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: http://test.api.deploymy.codes/users/orgs/deploymy-codes/remote_projects
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/json
+  Access-Control-Allow-Origin: http://127.0.0.1:59533
+  Access-Control-Allow-Methods: POST, GET, OPTIONS
+  Access-Control-Allow-Headers: "*, Content-Type, Accept, AUTHORIZATION, Cache-Control"
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Max-Age: '1728000'
+  Access-Control-Expose-Headers: Cache-Control, Content-Language, Content-Type, Expires,
+    Last-Modified, Pragma
+  Content-Length: '308'
+  X-Content-Type-Options: nosniff
+  Connection: close
+  Server: thin
+:content: '[{"name":"deploymy-codes/api","url":"https://github.com/deploymy-codes/api.git","imported":false},{"name":"deploymy-codes/frontend","url":"https://github.com/deploymy-codes/frontend.git","imported":false},{"name":"deploymy-codes/native","url":"https://github.com/deploymy-codes/native.git","imported":false}]'

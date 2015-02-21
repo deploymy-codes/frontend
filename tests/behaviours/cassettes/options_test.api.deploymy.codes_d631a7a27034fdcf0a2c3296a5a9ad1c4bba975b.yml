@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://test.api.deploymy.codes/users/remote_projects
+:body: ''
+:status: 200
+:method: options
+:headers:
+  Content-Type: text/html;charset=utf-8
+  Access-Control-Allow-Origin: http://127.0.0.1:59533
+  Access-Control-Allow-Methods: POST, GET, OPTIONS
+  Access-Control-Allow-Headers: "*, Content-Type, Accept, AUTHORIZATION, Cache-Control"
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Max-Age: '1728000'
+  Access-Control-Expose-Headers: Cache-Control, Content-Language, Content-Type, Expires,
+    Last-Modified, Pragma
+  Content-Length: '0'
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Connection: close
+  Server: thin
+:content: ''

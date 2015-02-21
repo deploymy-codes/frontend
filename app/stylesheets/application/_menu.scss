@@ -7,24 +7,13 @@
 
   a.m-menu--link {
     font-size: 1.4rem;
-    &:hover::After {
-      content: attr(title);
-      background: #232323;
-      padding: 0.5rem 0.8rem;
-      margin-left: 24px;
-      border-radius: 15px;
-      margin-top: -5px;
-      font-size: .9rem;
-      opacity: 0.9;
-      position: fixed;
-    }
   }
 
   .m-menu--link-with-picture {
     img {
       height: 40px;
       width:  40px;
-      margin: 0px;
+      margin: auto;
     }
   }
 
@@ -46,6 +35,30 @@
   }
 
   .m-menu--project-element {
-    flex: 0 1 5.5rem;
+    border-bottom: 1px solid $m-menu-link-separator;
+  }
+
+  .m-menu--description {
+    font-size:    0.8rem;
+    padding-left: 1rem;
+  }
+
+  &.is-collapsed {
+    .m-menu--description {
+      display: none;
+    }
+
+    a.m-menu--link:hover::After {
+      content:       attr(title);
+      background:    $m-menu-link-background--hover;
+      padding:       0.5rem 0.8rem;
+      margin-left:   24px;
+      border-radius: 15px;
+      margin-top:    -5px;
+      font-size:     .9rem;
+      opacity:       0.9;
+      position:      fixed;
+      z-index:       1;
+    }
   }
 }

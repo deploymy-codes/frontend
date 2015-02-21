@@ -1,11 +1,21 @@
 require.register('deploy_my_codes/services/project_service', function(exports, require, module) {
-  module.exports = function($q, ProjectRepository) {
-    var getRemoteProjects = function() {
-      return ProjectRepository.listRemoteProjects();
+  module.exports = function(ProjectRepository) {
+    var getProjectsforOrganization = function(organization) {
+      return ProjectRepository.listProjectsForOrganizationName(organization.name);
+    };
+
+    var getProjectsforUser = function() {
+      return ProjectRepository.listProjectsForUser();
+    }
+
+    var importProject = function(project) {
+      return ProjectRepository.importRemoteProjectByName(project.name);
     };
 
     return {
-      getRemoteProjects: getRemoteProjects
+      getProjectsforOrganization: getProjectsforOrganization,
+      getProjectsforUser:         getProjectsforUser,
+      import:                     importProject
     }
   };
 });

@@ -1,16 +1,20 @@
 require.register('config', function(exports, require, module){
   module.exports = function() {
     var _ = require('underscore');
-    var environment = /* @echo GULP_ENV */ || 'development';
+    var environment = '/* @echo GULP_ENV */' || 'development';
 
     return {
       development: {
         api: {
-          rootURL: 'http://dev.api.deploymy.codes:5000'
+          rootURL: 'http://dev.api.deploymy.codes:9292'
         }
       },
       production:  {},
-      test:        {}
+      test: {
+        api: {
+          rootURL: 'http://test.api.deploymy.codes:9292'
+        }
+      }
     }[environment];
   };
 });
