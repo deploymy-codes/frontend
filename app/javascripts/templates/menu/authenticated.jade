@@ -5,12 +5,15 @@ ul(class="m-menu vertical menu-bar dark", ng-controller="MenuCtl", ng-init="getU
 
   li
     a(class="m-menu--link m-menu--link-with-picture m-menu--link-with-profile-picture", href="#", title="Profile")
-      img(ng-src="{{:: user.avatar }}")
+      img(ng-src="{{:: user.avatar_url }}")
+      span(class="m-menu--description") {{:: user.full_name }}
 
   li
-    a(class="m-menu--link m-menu--link-with-icon", ui-sref="remote-projects", title="Add a project")
-      i(class="fa fa-plus-circle")
+    a(class="m-menu--link m-menu--link-with-icon grid-block align-left", ui-sref="add-project", title="Add a project")
+      i(class="fa fa-plus-circle grid-block shrink")
+      span(class="m-menu--description grid-block") Add a project
 
   li(ng-controller="AuthenticationCtrl")
-    a(class="m-menu--link m-menu--link-with-icon", href="#", ng-click="logout()", title="Sign out")
-      i(class="fa fa-sign-out")
+    a(class="m-menu--link m-menu--link-with-icon grid-block align-left", href="#", ng-click="logout()", title="Sign out")
+      i(class="fa fa-sign-out grid-block shrink")
+      span(class="m-menu--description grid-block") Sign out

@@ -1,0 +1,24 @@
+.m-add_project-organization {
+  transition: background 0.3s;
+  padding:    1rem;
+  cursor:  pointer;
+  &.is-selected, &:hover {
+    background: $m-add_project-organization-background--selected;
+  }
+}
+
+.m-add_project-organization--avatar {
+  border-radius: 4px;
+  width:         50px;
+}
+
+.m-add_project-project {
+  .button {
+    margin: 1px;
+  }
+
+  .grid-content {
+    align-self: center;
+    padding:    0;
+  }
+}

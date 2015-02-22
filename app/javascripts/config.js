@@ -1,16 +1,20 @@
 require.register('config', function(exports, require, module){
   module.exports = function() {
     var _ = require('underscore');
-    var environment = /* @echo GULP_ENV */ || 'development';
+    var environment = '/* @echo GULP_ENV */' == 'undefined' ? 'development' : '/* @echo GULP_ENV */';
 
     return {
       development: {
-        github: {
-          apiAuthenticationURL: 'http://localhost:5000/auth/github'
+        api: {
+          rootURL: 'http://dev.api.deploymy.codes:9292'
         }
       },
       production:  {},
-      test:        {}
+      test: {
+        api: {
+          rootURL: 'http://test.api.deploymy.codes:9292'
+        }
+      }
     }[environment];
   };
 });

@@ -1,0 +1,14 @@
+.button.hollow {
+  &.success {
+    &:hover {
+      background-color: $success-color;
+      color:            $body-background;
+    }
+  }
+  &.alert {
+    &:hover {
+      background-color: $alert-color;
+      color:            $body-background;
+    }
+  }
+}
