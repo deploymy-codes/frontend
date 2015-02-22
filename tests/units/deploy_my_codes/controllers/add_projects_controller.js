@@ -76,7 +76,7 @@ describe('AddProjectController', function() {
       expect(3).to.be.eql(_.select(fakeScope.organizations, function(organization) { return !organization.selected; }).length);
       expect(undefined).to.be.eql(fakeScope.user.selected);
 
-      fakeScope.selectContext(fakeScope.user);
+      fakeScope.selectUser();
 
       expect(3).to.be.eql(_.select(fakeScope.organizations, function(organization) { return !organization.selected; }).length);
       expect(true).to.be.eql(fakeScope.user.selected);
@@ -86,7 +86,7 @@ describe('AddProjectController', function() {
       expect(3).to.be.eql(_.select(fakeScope.organizations, function(organization) { return !organization.selected; }).length);
       expect(undefined).to.be.eql(fakeScope.user.selected);
 
-      fakeScope.selectContext(fakeScope.organizations[1]);
+      fakeScope.selectOrganization(fakeScope.organizations[1]);
 
       expect(2).to.be.eql(_.select(fakeScope.organizations, function(organization) { return !organization.selected; }).length);
       expect(1).to.be.eql(_.select(fakeScope.organizations, function(organization) { return organization.selected; }).length);
@@ -98,7 +98,7 @@ describe('AddProjectController', function() {
     it('loads the projects belonging at this user', function() {
       expect([]).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
 
-      fakeScope.selectContext(fakeScope.user);
+      fakeScope.selectUser();
 
       expect(['user/project1', 'user/project2']).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
     });
@@ -106,14 +106,14 @@ describe('AddProjectController', function() {
     it('loads the projects belonging at this organization', function() {
       expect([]).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
 
-      fakeScope.selectContext(fakeScope.organizations[1]);
+      fakeScope.selectOrganization(fakeScope.organizations[1]);
 
       expect(['organization2/project1']).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
     });
 
     describe('and an other organization was already selected', function() {
       beforeEach(function() {
-        fakeScope.selectContext(fakeScope.organizations[1]);
+        fakeScope.selectOrganization(fakeScope.organizations[1]);
       });
 
       it('selects the good organization', function() {
@@ -122,7 +122,7 @@ describe('AddProjectController', function() {
         expect(false).to.be.eql(fakeScope.user.selected);
         expect(true).to.be.eql(fakeScope.organizations[1].selected);
 
-        fakeScope.selectContext(fakeScope.organizations[0]);
+        fakeScope.selectOrganization(fakeScope.organizations[0]);
 
         expect(2).to.be.eql(_.select(fakeScope.organizations, function(organization) { return !organization.selected; }).length);
         expect(1).to.be.eql(_.select(fakeScope.organizations, function(organization) { return organization.selected; }).length);
@@ -136,7 +136,7 @@ describe('AddProjectController', function() {
         expect(false).to.be.eql(fakeScope.user.selected);
         expect(true).to.be.eql(fakeScope.organizations[1].selected);
 
-        fakeScope.selectContext(fakeScope.user);
+        fakeScope.selectUser();
 
         expect(3).to.be.eql(_.select(fakeScope.organizations, function(organization) { return !organization.selected; }).length);
         expect(true).to.be.eql(fakeScope.user.selected);
@@ -145,7 +145,7 @@ describe('AddProjectController', function() {
       it('loads the projects belonging at this organization', function() {
         expect(['organization2/project1']).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
 
-        fakeScope.selectContext(fakeScope.organizations[0]);
+        fakeScope.selectOrganization(fakeScope.organizations[0]);
 
         expect(['organization1/project1', 'organization1/project2', 'organization1/project3']).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
       });
@@ -153,7 +153,7 @@ describe('AddProjectController', function() {
       it('loads the projects belonging at this user', function() {
         expect(['organization2/project1']).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
 
-        fakeScope.selectContext(fakeScope.user);
+        fakeScope.selectUser();
 
         expect(['user/project1', 'user/project2']).to.be.eql(_.map(fakeScope.projects, function(project) { return project.name }));
       });

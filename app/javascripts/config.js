@@ -1,7 +1,7 @@
 require.register('config', function(exports, require, module){
   module.exports = function() {
     var _ = require('underscore');
-    var environment = '/* @echo GULP_ENV */' || 'development';
+    var environment = '/* @echo GULP_ENV */' == 'undefined' ? 'development' : '/* @echo GULP_ENV */';
 
     return {
       development: {

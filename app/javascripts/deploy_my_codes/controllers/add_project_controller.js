@@ -8,31 +8,31 @@ require.register('deploy_my_codes/controllers/add_project_controller', function(
       $scope.user = user;
     };
 
-    $scope.projects = [];
-    $scope.selectContext = function(context) {
+    var resetSelection = function() {
       _.each($scope.organizations, function(organization) { organization.selected = false });
       $scope.projects      = [];
       $scope.user.selected = false;
-      context.selected     = true;
+    };
 
-      if (context.isLoggedIn === true) {
-        loadUserProjects();
-      } else {
-        loadOrganizationProjects(context);
-      }
-    }
+    $scope.projects = [];
 
-    var loadOrganizationProjects = function(organization) {
+    $scope.selectOrganization = function(organization) {
+      resetSelection();
+      organization.selected = true;
+
       ProjectService.getProjectsforOrganization(organization).then(function(projects) {
         $scope.projects = projects;
       });
     };
 
-    var loadUserProjects = function() {
+    $scope.selectUser = function() {
+      resetSelection();
+      $scope.user.selected = true;
+
       ProjectService.getProjectsforUser().then(function(projects) {
         $scope.projects = projects;
       });
-    }
+    };
 
     OrganizationService.getOrganizations().then(bindOrganizations);
     UserService.get().then(bindUser);

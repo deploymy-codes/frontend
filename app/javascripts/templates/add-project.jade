@@ -3,14 +3,14 @@ div(class="grid-block small-up-1 large-up-2", ng-controller="AddProjectControlle
     h2 Choose an organization
     section(class="grid-block small-up-1")
       div(class="grid-content")
-        div(class="card m-add_project-organization", ng-class="{ 'is-selected': organization.selected }", ng-click="selectContext(user)")
+        div(class="card m-add_project-organization", ng-class="{ 'is-selected': user.selected }", ng-click="selectUser()")
           div(class="grid-block")
             div(class="grid-content shrink")
               img(class="m-add_project-organization--avatar", ng-src="{{:: user.avatar_url }}")
             div(class="grid-content")
               h3 {{:: user.username }}
       div(class="grid-content", ng-repeat="organization in organizations")
-        div(class="card m-add_project-organization", ng-class="{ 'is-selected': organization.selected }", ng-click="selectContext(organization)")
+        div(class="card m-add_project-organization", ng-class="{ 'is-selected': organization.selected }", ng-click="selectOrganization(organization)")
           div(class="grid-block")
             div(class="grid-content shrink")
               img(class="m-add_project-organization--avatar", ng-src="{{:: organization.avatar_url }}")
