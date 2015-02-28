@@ -13,8 +13,8 @@
   Access-Control-Max-Age: '1728000'
   Access-Control-Expose-Headers: Cache-Control, Content-Language, Content-Type, Expires,
     Last-Modified, Pragma
-  Content-Length: '238'
+  Content-Length: '345'
   X-Content-Type-Options: nosniff
   Connection: close
   Server: thin
-:content: '[{"name":"deploymycodes/awesome-test-project","url":"https://github.com/deploymycodes/awesome-test-project.git","imported":false},{"name":"deploymycodes/lets-chat","url":"https://github.com/deploymy-codes/lets-chat.git","imported":false}]'
+:content: '[{"full_name":"deploymycodes/awesome-test-project","owner":"deploymycodes","name":"awesome-test-project","url":"https://github.com/deploymycodes/awesome-test-project.git","imported":false},{"full_name":"deploymycodes/lets-chat","owner":"deploymycodes","name":"lets-chat","url":"https://github.com/deploymy-codes/lets-chat.git","imported":false}]'

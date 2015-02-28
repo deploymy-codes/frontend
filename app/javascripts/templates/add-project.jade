@@ -1,37 +1,38 @@
-div(class="grid-block small-up-1 large-up-2", ng-controller="AddProjectController")
+div(class="grid-block vertical")
   div(class="grid-container")
-    h2 Choose an organization
-    section(class="grid-block small-up-1")
-      div(class="grid-content")
-        div(class="card m-add_project-organization", ng-class="{ 'is-selected': user.selected }", ng-click="selectUser()")
-          div(class="grid-block")
-            div(class="grid-content shrink")
-              img(class="m-add_project-organization--avatar", ng-src="{{:: user.avatar_url }}")
-            div(class="grid-content")
-              h3 {{:: user.username }}
-      div(class="grid-content", ng-repeat="organization in organizations")
-        div(class="card m-add_project-organization", ng-class="{ 'is-selected': organization.selected }", ng-click="selectOrganization(organization)")
-          div(class="grid-block")
-            div(class="grid-content shrink")
-              img(class="m-add_project-organization--avatar", ng-src="{{:: organization.avatar_url }}")
-            div(class="grid-content")
-              h3 {{:: organization.name }}
+    div(class="grid-block shrink", user-feedback-messages="")
+  div(class="grid-block small-up-1 large-up-2", ng-controller="AddProjectController")
+    div(class="grid-container")
+      h2 Choose an organization
+      section(class="grid-block small-up-1")
+        div(class="grid-content")
+          div(class="card m-add_project-organization", ng-class="{ 'is-selected': user.selected }", ng-click="selectUser()")
+            div(class="grid-block")
+              div(class="grid-content shrink")
+                img(class="m-add_project-organization--avatar", ng-src="{{:: user.avatar_url }}")
+              div(class="grid-content")
+                h3 {{:: user.username }}
+        div(class="grid-content", ng-repeat="organization in organizations")
+          div(class="card m-add_project-organization", ng-class="{ 'is-selected': organization.selected }", ng-click="selectOrganization(organization)")
+            div(class="grid-block")
+              div(class="grid-content shrink")
+                img(class="m-add_project-organization--avatar", ng-src="{{:: organization.avatar_url }}")
+              div(class="grid-content")
+                h3 {{:: organization.name }}
 
-  div(class="grid-container", ng-if="projects.length")
-    h2 Choose a project
-    section(class="grid-block small-up-1")
-      div(class="block-list")
-        ul
-          li(class="m-add_project-project", ng-repeat="project in projects", ng-class="{ 'is-imported': project.imported }")
-            span
-              div(class="grid-block")
-                div(class="grid-content m-add_project-project--name")
-                  | {{ project.name }}
-                div(class="grid-content shrink", ng-if="project.imported")
-                  button(class="alert hollow button")
-                    i(class="fa fa-trash-o")
-                    &nbsp; Remove
-                div(class="grid-content shrink", ng-if="!project.imported")
-                  a(class="success hollow button", href="/")
-                    i(class="fa fa-check-circle")
-                    &nbsp Import project
+    div(class="grid-container", ng-if="projects.length")
+      h2 Choose a project
+      section(class="grid-block small-up-1")
+        div(class="block-list")
+          ul
+            li(class="m-add_project-project", ng-repeat="project in projects", ng-class="{ 'is-imported': project.imported }")
+              span
+                div(class="grid-block")
+                  div(class="grid-content m-add_project-project--name")
+                    | {{ project.name }}
+                  div(class="grid-content shrink m-add_project-project--is-imported", ng-if="project.imported")
+                    | Already imported
+                  div(class="grid-content shrink", ng-if="!project.imported")
+                    a(class="success hollow button", ng-click="importProject(project)")
+                      i(class="fa fa-check-circle")
+                      &nbsp Import project

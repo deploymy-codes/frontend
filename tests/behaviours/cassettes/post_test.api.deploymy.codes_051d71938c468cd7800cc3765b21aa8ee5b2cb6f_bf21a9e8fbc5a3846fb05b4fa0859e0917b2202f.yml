@@ -1,7 +1,7 @@
 ---
 :scope: 
-:url: http://test.api.deploymy.codes/auth/github
-:body: '{"code":"XXXX"}'
+:url: http://test.api.deploymy.codes/users/deploymycodes/remote_projects/awesome-test-project
+:body: "{}"
 :status: 201
 :method: post
 :headers:
@@ -13,8 +13,8 @@
   Access-Control-Max-Age: '1728000'
   Access-Control-Expose-Headers: Cache-Control, Content-Language, Content-Type, Expires,
     Last-Modified, Pragma
-  Content-Length: '198'
+  Content-Length: '132'
   X-Content-Type-Options: nosniff
   Connection: close
   Server: thin
-:content: '{"api_key":"4e239ff6-8f84-40dd-8b0b-aad529ebd612","email":"coders@deploymy.codes","full_name":"Robots","avatar_url":"https://avatars.githubusercontent.com/u/10991964?v=3","username":"deploymycodes"}'
+:content: '{"name":"deploymycodes/awesome-test-project","remote_id":31125946,"url":"https://github.com/deploymycodes/awesome-test-project.git"}'

@@ -13,8 +13,8 @@
   Access-Control-Max-Age: '1728000'
   Access-Control-Expose-Headers: Cache-Control, Content-Language, Content-Type, Expires,
     Last-Modified, Pragma
-  Content-Length: '308'
+  Content-Length: '445'
   X-Content-Type-Options: nosniff
   Connection: close
   Server: thin
-:content: '[{"name":"deploymy-codes/api","url":"https://github.com/deploymy-codes/api.git","imported":false},{"name":"deploymy-codes/frontend","url":"https://github.com/deploymy-codes/frontend.git","imported":false},{"name":"deploymy-codes/native","url":"https://github.com/deploymy-codes/native.git","imported":false}]'
+:content: '[{"full_name":"deploymy-codes/api","owner":"deploymy-codes","name":"api","url":"https://github.com/deploymy-codes/api.git","imported":false},{"full_name":"deploymy-codes/frontend","owner":"deploymy-codes","name":"frontend","url":"https://github.com/deploymy-codes/frontend.git","imported":false},{"full_name":"deploymy-codes/native","owner":"deploymy-codes","name":"native","url":"https://github.com/deploymy-codes/native.git","imported":false}]'

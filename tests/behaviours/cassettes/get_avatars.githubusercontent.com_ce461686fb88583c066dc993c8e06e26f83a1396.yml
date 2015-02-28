@@ -5,7 +5,7 @@
 :status: 200
 :method: get
 :headers:
-  Date: Sat, 21 Feb 2015 14:37:27 GMT
+  Date: Mon, 02 Mar 2015 20:43:41 GMT
   Server: Apache
   Access-Control-Allow-Origin: "*"
   Cache-Control: max-age=300
@@ -17,17 +17,17 @@
   Timing-Allow-Origin: https://github.com
   X-Content-Type-Options: nosniff
   X-Frame-Options: deny
-  X-Github-Request-Id: 403a92b5-b87b-11e4-8251-534c38d78ed1
+  X-Github-Request-Id: 2dd65ad7-beb7-11e4-8f1a-6380beea43c4
   X-Xss-Protection: 1; mode=block
   host: avatars.githubusercontent.com
   Content-Length: '19153'
   Accept-Ranges: bytes
   Via: 1.1 varnish
-  X-Served-By: cache-lcy1122-LCY
+  X-Served-By: cache-fra1241-FRA
   X-Cache: HIT
   X-Cache-Hits: '1'
-  Expires: Sat, 21 Feb 2015 14:42:27 GMT
-  Source-Age: '149424'
+  Expires: Mon, 02 Mar 2015 20:48:41 GMT
+  Source-Age: '263552'
   Vary: AuthorizationAccept-Encoding
   Connection: close
 :content: !binary |-

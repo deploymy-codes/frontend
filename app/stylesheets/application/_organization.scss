@@ -21,4 +21,13 @@
     align-self: center;
     padding:    0;
   }
+
+  .m-add_project-project--is-imported {
+    color:       $m-add_project-project--is-importProject-color;
+    font-size:   0.9rem;
+    font-style:  italic;
+    line-height: 1;
+    padding:     0.85em 1em;
+  }
 }
+

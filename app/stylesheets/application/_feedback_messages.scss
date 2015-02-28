@@ -1,0 +1,16 @@
+.m-user_feedback_messages {
+  list-style-type: none;
+}
+
+.m-user_feedback_message {
+  border: 1px solid $m-user_feedback_message--border;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  background: $m-user_feedback_message--background;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: rgb(255, 255, 255);
+}

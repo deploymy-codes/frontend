@@ -9,7 +9,7 @@ require.register('deploy_my_codes/services/project_service', function(exports, r
     }
 
     var importProject = function(project) {
-      return ProjectRepository.importRemoteProjectByName(project.name);
+      return ProjectRepository.importRemoteProjectByOwnerAndName(project.owner, project.name);
     };
 
     return {

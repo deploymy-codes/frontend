@@ -5,29 +5,29 @@
 :status: 200
 :method: get
 :headers:
-  Date: Sat, 21 Feb 2015 14:37:27 GMT
+  Date: Mon, 02 Mar 2015 20:43:41 GMT
   Server: Apache
   Access-Control-Allow-Origin: "*"
   Cache-Control: max-age=300
   Content-Security-Policy: default-src 'none'
   Content-Type: image/png
   Etag: '"cc45f75d7d655f8927033b1fd4ea74247551ef76"'
-  Last-Modified: Sun, 20 Feb 2005 14:53:44 GMT
+  Last-Modified: Mon, 21 Feb 2005 14:38:38 GMT
   Strict-Transport-Security: max-age=31557600
   Timing-Allow-Origin: https://github.com
   X-Content-Type-Options: nosniff
   X-Frame-Options: deny
-  X-Github-Request-Id: cb41e8c2-b9b8-11e4-8084-eba4c7966b25
+  X-Github-Request-Id: 0ef01d65-b9b9-11e4-8795-fda497988af1
   X-Xss-Protection: 1; mode=block
   host: avatars.githubusercontent.com
   Content-Length: '1561'
   Accept-Ranges: bytes
   Via: 1.1 varnish
-  X-Served-By: cache-lcy1127-LCY
+  X-Served-By: cache-fra1240-FRA
   X-Cache: HIT
   X-Cache-Hits: '1'
-  Expires: Sat, 21 Feb 2015 14:42:27 GMT
-  Source-Age: '13041'
+  Expires: Mon, 02 Mar 2015 20:48:41 GMT
+  Source-Age: '812501'
   Vary: AuthorizationAccept-Encoding
   Connection: close
 :content: !binary |-
