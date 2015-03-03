@@ -22,7 +22,7 @@ describe 'Add project' do
       expect(page.all('.m-add_project-project').length).to eql 0
       page.all('.m-add_project-organization')[1].click
       expect(page).to have_selector('.m-add_project-project--name')
-      expect(page.all('.m-add_project-project--name').map(&:text)).to eql ['deploymy-codes/api', 'deploymy-codes/frontend', 'deploymy-codes/native']
+      expect(page.all('.m-add_project-project--name').map(&:text)).to eql ['api', 'frontend', 'native']
     end
 
     it 'displays user projects' do
@@ -31,7 +31,21 @@ describe 'Add project' do
       expect(page.all('.m-add_project-project').length).to eql 0
       page.all('.m-add_project-organization')[0].click
       expect(page).to have_selector('.m-add_project-project--name')
-      expect(page.all('.m-add_project-project--name').map(&:text)).to eql ['deploymycodes/awesome-test-project', 'deploymycodes/lets-chat']
+      expect(page.all('.m-add_project-project--name').map(&:text)).to eql ['awesome-test-project', 'lets-chat']
+    end
+
+    context 'when user click to import a project' do
+      it 'imports the project' do
+        authenticate_user
+        visit '/application/#/add-project'
+        page.all('.m-add_project-organization')[0].click
+        expect(page).to have_selector('.m-add_project-project--name')
+        within('.m-add_project-project:first-child') do
+          find('a').click
+        end
+        expect(page).to have_selector('.m-user_feedback_message')
+        expect(page.find('.m-user_feedback_message').text).to eql('Project awesome-test-project has been successfully imported.')
+      end
     end
   end
 end

@@ -1,5 +1,5 @@
-require.register('deploy_my_codes/controllers/add_project_controller', function(exports, require, module){
-  module.exports = function($scope, OrganizationService, ProjectService, UserService) {
+require.register('deploy_my_codes/controllers/add_project_controller', function(exports, require, module) {
+  module.exports = function($scope, OrganizationService, ProjectService, UserService, UserFeedbackService) {
     var bindOrganizations = function(organizations) {
       $scope.organizations = organizations;
     };
@@ -15,6 +15,13 @@ require.register('deploy_my_codes/controllers/add_project_controller', function(
     };
 
     $scope.projects = [];
+
+    $scope.importProject = function(project) {
+      ProjectService.import(project).then(function(_) {
+        project.imported = true;
+        UserFeedbackService.success('Project ' + project.name + ' has been successfully imported.');
+      });
+    };
 
     $scope.selectOrganization = function(organization) {
       resetSelection();
