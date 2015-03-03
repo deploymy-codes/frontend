@@ -6,6 +6,6 @@ require.register('deploy_my_codes/repositories/organization_repository', functio
 
     return {
       listOrganizations: listOrganizations
-    }
+    };
   };
 });

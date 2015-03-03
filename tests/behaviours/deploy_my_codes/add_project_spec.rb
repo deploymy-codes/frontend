@@ -44,7 +44,7 @@ describe 'Add project' do
           find('a').click
         end
         expect(page).to have_selector('.m-user_feedback_message')
-        expect(page.find('.m-user_feedback_message').text).to eql('Project awesome-test-project has successfully been imported.')
+        expect(page.find('.m-user_feedback_message').text).to eql('Project awesome-test-project has been successfully imported.')
       end
     end
   end

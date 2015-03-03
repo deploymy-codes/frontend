@@ -9,8 +9,8 @@ require.register('deploy_my_codes/directives/user_feedback_messages', function(e
     };
 
     return {
-      controller: ['$scope', 'UserFeedbackService', listenFeedbacksController],
-      template:   '<ul class="grid-block vertical m-user_feedback_messages"><li class="m-user_feedback_message" ng-repeat="message in messages">{{ message }}</li></ul>'
+      controller:  ['$scope', 'UserFeedbackService', listenFeedbacksController],
+      templateUrl: '/directives/user_feedback_messages.html'
     };
   };
 });

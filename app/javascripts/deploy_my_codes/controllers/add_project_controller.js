@@ -19,7 +19,7 @@ require.register('deploy_my_codes/controllers/add_project_controller', function(
     $scope.importProject = function(project) {
       ProjectService.import(project).then(function(_) {
         project.imported = true;
-        UserFeedbackService.success('Project ' + project.name + ' has successfully been imported.');
+        UserFeedbackService.success('Project ' + project.name + ' has been successfully imported.');
       });
     };
 

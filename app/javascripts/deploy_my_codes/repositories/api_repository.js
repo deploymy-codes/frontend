@@ -22,6 +22,6 @@ require.register('deploy_my_codes/repositories/api_repository', function(exports
     return {
       get:  get,
       post: post
-    }
+    };
   };
 });
