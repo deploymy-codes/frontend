@@ -1,5 +1,7 @@
 require.register('deploy_my_codes/controllers/add_project_controller', function(exports, require, module) {
   module.exports = function($scope, OrganizationService, ProjectService, UserService, UserFeedbackService) {
+    var _ = require('underscore');
+
     var bindOrganizations = function(organizations) {
       $scope.organizations = organizations;
     };

@@ -16,6 +16,6 @@ require.register('deploy_my_codes/repositories/project_repository', function(exp
       importRemoteProjectByOwnerAndName: importRemoteProjectByOwnerAndName,
       listProjectsForOrganizationName:   listProjectsForOrganizationName,
       listProjectsForUser:               listProjectsForUser
-    }
+    };
   };
 });

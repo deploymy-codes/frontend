@@ -6,7 +6,7 @@ require.register('deploy_my_codes/services/project_service', function(exports, r
 
     var getProjectsforUser = function() {
       return ProjectRepository.listProjectsForUser();
-    }
+    };
 
     var importProject = function(project) {
       return ProjectRepository.importRemoteProjectByOwnerAndName(project.owner, project.name);
@@ -16,6 +16,6 @@ require.register('deploy_my_codes/services/project_service', function(exports, r
       getProjectsforOrganization: getProjectsforOrganization,
       getProjectsforUser:         getProjectsforUser,
       import:                     importProject
-    }
+    };
   };
 });
