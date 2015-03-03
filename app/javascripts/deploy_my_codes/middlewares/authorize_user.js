@@ -1,4 +1,4 @@
-require.register('deploy_my_codes/middlewares/authorize_user', function(exports, require, module){
+require.register('deploy_my_codes/middlewares/authorize_user', function(exports, require, module) {
   var _ = require('underscore');
 
   module.exports = function($rootScope, $state, $window, AuthenticationService) {
@@ -11,7 +11,7 @@ require.register('deploy_my_codes/middlewares/authorize_user', function(exports,
       return _.reduce(raw_parameters.split('&'), function(params, param) {
         var matches = REGEX.exec(param);
         params[matches[1]] = matches[2];
-        return params
+        return params;
       }, {});
     };
 
@@ -22,7 +22,7 @@ require.register('deploy_my_codes/middlewares/authorize_user', function(exports,
 
       AuthenticationService.authenticate(GitHubCode).then(function(user) {
         event.preventDefault();
-        $window.location = '/application'
+        $window.location = '/application';
       });
     });
   };

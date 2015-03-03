@@ -63,7 +63,7 @@ describe('AddProjectController', function() {
 
   beforeEach(function() {
     subject = describedClass(fakeScope, fakeOrganizationService, fakeProjectService, fakeUserService);
-  })
+  });
 
   describe('when controller is loaded', function() {
     it('loads the organization list', function() {

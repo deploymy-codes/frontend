@@ -1,4 +1,4 @@
-require.register('deploy_my_codes/middlewares/authenticated_route', function(exports, require, module){
+require.register('deploy_my_codes/middlewares/authenticated_route', function(exports, require, module) {
   module.exports = function($rootScope, $state, UserService) {
     $rootScope.$on('$stateChangeStart', function(event, destinationState) {
       if (!destinationState.data || !angular.isFunction(destinationState.data.shouldBeRedirectedToSignIn)) return;
@@ -7,7 +7,7 @@ require.register('deploy_my_codes/middlewares/authenticated_route', function(exp
 
         if (shouldBeRedirectedToSignIn) {
           event.preventDefault();
-          location.href = '/'
+          location.href = '/';
         }
       });
     });

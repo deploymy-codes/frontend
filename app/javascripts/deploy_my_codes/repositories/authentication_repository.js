@@ -7,5 +7,5 @@ require.register('deploy_my_codes/repositories/authentication_repository', funct
     return {
       save: registerUser
     };
-  }
+  };
 });

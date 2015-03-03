@@ -1,4 +1,4 @@
-require.register('deploy_my_codes/providers/route_tool_provider', function(exports, require, module){
+require.register('deploy_my_codes/providers/route_tool_provider', function(exports, require, module) {
   module.exports = function() {
     var _ = require('underscore');
 
@@ -12,7 +12,7 @@ require.register('deploy_my_codes/providers/route_tool_provider', function(expor
     };
 
     var AuthorizedUser = function(state) {
-      var authorizationRule = { data: { authorizeUser: true } }
+      var authorizationRule = { data: { authorizeUser: true } };
       return _.extend(authorizationRule, state);
     };
 
